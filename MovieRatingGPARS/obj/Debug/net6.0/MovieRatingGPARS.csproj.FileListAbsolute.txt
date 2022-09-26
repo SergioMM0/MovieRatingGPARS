@@ -1,0 +1,12 @@
+C:\Users\Sergio M\RiderProjects\MovieRatingGPARS\MovieRatingGPARS\bin\Debug\net6.0\MovieRatingGPARS.deps.json
+C:\Users\Sergio M\RiderProjects\MovieRatingGPARS\MovieRatingGPARS\bin\Debug\net6.0\MovieRatingGPARS.dll
+C:\Users\Sergio M\RiderProjects\MovieRatingGPARS\MovieRatingGPARS\bin\Debug\net6.0\MovieRatingGPARS.pdb
+C:\Users\Sergio M\RiderProjects\MovieRatingGPARS\MovieRatingGPARS\obj\Debug\net6.0\MovieRatingGPARS.csproj.AssemblyReference.cache
+C:\Users\Sergio M\RiderProjects\MovieRatingGPARS\MovieRatingGPARS\obj\Debug\net6.0\MovieRatingGPARS.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Sergio M\RiderProjects\MovieRatingGPARS\MovieRatingGPARS\obj\Debug\net6.0\MovieRatingGPARS.AssemblyInfoInputs.cache
+C:\Users\Sergio M\RiderProjects\MovieRatingGPARS\MovieRatingGPARS\obj\Debug\net6.0\MovieRatingGPARS.AssemblyInfo.cs
+C:\Users\Sergio M\RiderProjects\MovieRatingGPARS\MovieRatingGPARS\obj\Debug\net6.0\MovieRatingGPARS.csproj.CoreCompileInputs.cache
+C:\Users\Sergio M\RiderProjects\MovieRatingGPARS\MovieRatingGPARS\obj\Debug\net6.0\MovieRatingGPARS.dll
+C:\Users\Sergio M\RiderProjects\MovieRatingGPARS\MovieRatingGPARS\obj\Debug\net6.0\refint\MovieRatingGPARS.dll
+C:\Users\Sergio M\RiderProjects\MovieRatingGPARS\MovieRatingGPARS\obj\Debug\net6.0\MovieRatingGPARS.pdb
+C:\Users\Sergio M\RiderProjects\MovieRatingGPARS\MovieRatingGPARS\obj\Debug\net6.0\ref\MovieRatingGPARS.dll

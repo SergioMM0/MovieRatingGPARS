@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieRatingGPARS", "MovieRatingGPARS\MovieRatingGPARS.csproj", "{20463CE0-55CB-4E28-8129-47D1CA064188}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "TestProject1\TestProject1.csproj", "{C52CC075-A006-49CC-8068-D519E6F0F534}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{20463CE0-55CB-4E28-8129-47D1CA064188}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20463CE0-55CB-4E28-8129-47D1CA064188}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20463CE0-55CB-4E28-8129-47D1CA064188}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C52CC075-A006-49CC-8068-D519E6F0F534}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C52CC075-A006-49CC-8068-D519E6F0F534}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C52CC075-A006-49CC-8068-D519E6F0F534}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C52CC075-A006-49CC-8068-D519E6F0F534}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
