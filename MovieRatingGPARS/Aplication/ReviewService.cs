@@ -17,49 +17,19 @@ public class ReviewService : IReviewService
 
     public int GetNumberOfReviewsFromReviewer(int reviewer)
     {
-        var count = 0;
-        foreach (BEReview review in _repository.GetAll())
-        {
-            if (review.Reviewer == reviewer)
-            {
-                count++;
-            }
-        }
-        return count;
+        IEnumerable<BEReview> reviews = _repository.GetAll().Where(review => review.Reviewer == reviewer);
+        return reviews.Count();
     }
 
     public int GetNumberOfRatesByReviewer(int reviewer, int rate)
     {
-        int count = 0;
-
-        foreach (BEReview review in _repository.GetAll())
-        {
-            if (reviewer == review.Reviewer && rate == review.Grade)
-            {
-                count++;
-            }
-        }
-
-        return count;
+        return _repository.GetAll().Count(review => reviewer == review.Reviewer && rate == review.Grade);
     }
     public  double GetAverageRateFromReviewer(int reviewer)
     {
-        var count = 0;
-        var total = 0;
-        foreach (BEReview review in _repository.GetAll())
-        {
-            if (review.Reviewer == reviewer)
-            {
-                count++;
-                total += review.Grade;
-            }
-        }
-
-        if (count!=0)
-            return total/count;
+        IEnumerable<BEReview> reviews = _repository.GetAll().Where(review => review.Reviewer == reviewer);
         
-            return 0;
-        
+        return reviews.Sum(review => review.Grade) / reviews.Count();
     }
     
 
@@ -78,19 +48,22 @@ public class ReviewService : IReviewService
         IEnumerable<BEReview> reviews = _repository.GetAll()
             .Where(r=>r.Movie==movie)
             .Where(r=>r.Grade==rate);
-        int occurences = reviews.Count();
-        return occurences;
+        int occurrences = reviews.Count();
+        return occurrences;
     }
 
     public List<int> GetMoviesWithHighestNumberOfTopRates()
     {
-        throw new NotImplementedException();
+        return _repository.GetAll()
+            .Where(review => review.Grade == 5)
+            .Select(review => review.Movie)
+            .ToList();
     }
 
     public List<int> GetMostProductiveReviewers()
     {
         var dictionary = new Dictionary<int,int>();
-        for (int i = 0; i < _repository.GetAll().Length; i++)
+        for (var i = 0; i < _repository.GetAll().Length; i++)
         { 
             if (!dictionary.ContainsKey(_repository.GetAll()[i].Reviewer))
                 dictionary.Add(_repository.GetAll()[i].Reviewer,1);
@@ -104,17 +77,9 @@ public class ReviewService : IReviewService
             }
         }
 
-        List<int> mostActiveReviewers=new List<int>();
         var maxValueKey = dictionary.Aggregate((x, y) => x.Value > y.Value ? x : y).Value;
-        foreach (var item in dictionary)
-        {
-            if (item.Value>=maxValueKey)
-            {
-                mostActiveReviewers.Add(item.Key);
-            }
-        }
 
-        return mostActiveReviewers;
+        return (from item in dictionary where item.Value >= maxValueKey select item.Key).ToList();
     }
 
     
@@ -180,7 +145,9 @@ public class ReviewService : IReviewService
 
     public List<int> GetTopMoviesByReviewer(int reviewer)
     {
-        throw new NotImplementedException();
+        IEnumerable reviews = _repository.GetAll().Where(review => review.Reviewer == reviewer);
+        return null;
+
     }
 
     public List<int> GetReviewersByMovie(int movie)
