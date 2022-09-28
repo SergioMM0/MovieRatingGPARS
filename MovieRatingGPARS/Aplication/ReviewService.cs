@@ -52,6 +52,7 @@ public class ReviewService : IReviewService
         return occurrences;
     }
 
+    //method implemented but still needs to be tested.
     public List<int> GetMoviesWithHighestNumberOfTopRates()
     {
         return _repository.GetAll()
@@ -142,12 +143,12 @@ public class ReviewService : IReviewService
         return valuesInOrder;
 
     }
-
+    //method implemented but still needs to be tested.
     public List<int> GetTopMoviesByReviewer(int reviewer)
     {
         IEnumerable reviews = _repository.GetAll().Where(review => review.Reviewer == reviewer);
-        return null;
-
+        List<BEReview> reviewsArray = reviews.Cast<BEReview>().ToList();
+        return reviewsArray.OrderBy(review => review.Grade).ThenBy(review =>review.ReviewDate).Select(review => review.Reviewer).ToList();
     }
 
     public List<int> GetReviewersByMovie(int movie)
