@@ -97,22 +97,19 @@ public class UnitTest1
         Assert.Equal(result, expected);
         mockRepository.Verify(r => r.GetAll(), Times.Once);
     }
+    
     [Theory]
-    [InlineData()]
-    public void GetMostProductiveReviewers(List<int>expected)
+    [InlineData(new int[] { 1, 3, 3, 2, 2, 4, 8 },new int []{2,3})]
+    
+    public void GetMostProductiveReviewers(int [] reviewrsIds,int[] mostActiveReviewers)
     {
         //Arrange
-        BEReview[] fakeRepo = new BEReview[]
+        var fakeRepo = new BEReview[reviewrsIds.Length];
+        
+        for (int i = 0; i < reviewrsIds.Length; i++)
         {
-            //Reviewer 1 has an average of 5
-            new BEReview() { Reviewer = 1, Movie = 1, Grade = 10, ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 1, Movie = 2, Grade = 0, ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 2, Movie = 1, Grade = 4, ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 2, Movie = 2, Grade = 2, ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 1, Movie = 3, Grade = 10, ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 2, Movie = 3, Grade = 3, ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 1, Movie = 4, Grade = 0, ReviewDate = new DateTime() }
-        };
+            fakeRepo[i].Reviewer = reviewrsIds[i];
+        }
         Mock<IReviewRepository> mockRepository = new Mock<IReviewRepository>();
         mockRepository.Setup(r => r.GetAll()).Returns(fakeRepo);
         
@@ -121,13 +118,12 @@ public class UnitTest1
 
         //Act
 
-        List<int> result = service.GetMostProductiveReviewers();
-
-        
+        int[] result = service.GetMostProductiveReviewers().ToArray();
 
         //Assert
         
-        Assert.Contains()
+        Assert.Equal(result,mostActiveReviewers);
+        Assert.True(result.Length==mostActiveReviewers.Length);
         mockRepository.Verify(r => r.GetAll(), Times.Once);
     }
 

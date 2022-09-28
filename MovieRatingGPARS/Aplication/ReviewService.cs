@@ -27,26 +27,22 @@ public class ReviewService : IReviewService
         return count;
     }
 
-    public double GetAverageRateFromReviewer(int reviewer)
-    {
-<<<<<<< Updated upstream
-        throw new NotImplementedException();
-    }
-
     public int GetNumberOfRatesByReviewer(int reviewer, int rate)
     {
         int count = 0;
 
         foreach (BEReview review in _repository.GetAll())
         {
-            if (reviewer==review.Reviewer && rate==review.Grade)
+            if (reviewer == review.Reviewer && rate == review.Grade)
             {
                 count++;
             }
         }
 
         return count;
-=======
+    }
+    public  double GetAverageRateFromReviewer(int reviewer)
+    {
         var count = 0;
         var total = 0;
         foreach (BEReview review in _repository.GetAll())
@@ -64,12 +60,7 @@ public class ReviewService : IReviewService
             return 0;
         
     }
-
-    public int GetNumberOfRatesByReviewer(int reviewer, int rate)
-    {
-        throw new NotImplementedException();
->>>>>>> Stashed changes
-    }
+    
 
     public int GetNumberOfReviews(int movie)
     {
