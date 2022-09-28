@@ -98,11 +98,12 @@ public class UnitTest1
         mockRepository.Verify(r => r.GetAll(), Times.Once);
     }
     
+    //Please do not change for the moment.
+    //Debugging reveals correct behaviour but test keeps failing.
     [Theory]
     [InlineData(new int[] { 1, 3, 3, 2, 2, 4, 8 },new int []{2,3})]
     [InlineData(new int[] { 1, 2, 3, 1, 1, 1, 2 },new int []{1})]
     [InlineData(new int[] { 1, 2, 3, 1, 2, 3, 0 },new int []{1,2,3})]
-
     
     public void GetMostProductiveReviewers(int [] reviewrsIds,int[] mostActiveReviewers)
     {
@@ -128,8 +129,8 @@ public class UnitTest1
         var result = service.GetMostProductiveReviewers();
 
         //Assert
+        Assert.True(result.All(mostActiveReviewers.Contains));
         Assert.True(result.Count==mostActiveReviewers.Length);
-        //Assert.True(result.All(mostActiveReviewers.Contains));
         
         
         mockRepository.Verify(r => r.GetAll(), Times.Once);
