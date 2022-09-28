@@ -1,3 +1,4 @@
+using System.Collections;
 using MovieRatingGPARS.Core.Model;
 using MovieRatingGPARS.Core.Repository;
 using MovieRatingGPARS.Core.Service;
@@ -88,7 +89,32 @@ public class ReviewService : IReviewService
 
     public List<int> GetMostProductiveReviewers()
     {
-        throw new NotImplementedException();
+        var dictionary = new Dictionary<int,int>();
+        for (int i = 0; i < _repository.GetAll().Length; i++)
+        { 
+            if (!dictionary.ContainsKey(_repository.GetAll()[i].Reviewer))
+                dictionary.Add(_repository.GetAll()[i].Reviewer,1);
+            
+            for (int j = i+1; j < _repository.GetAll().Length-1; j++)
+            {
+                if (_repository.GetAll()[j]==_repository.GetAll()[i])
+                {
+                    dictionary[_repository.GetAll()[i].Reviewer] = int.Parse(dictionary[_repository.GetAll()[i].Reviewer].ToString())+1;
+                }
+            }
+        }
+
+        List<int> mostActiveReviewers=new List<int>();
+        var maxValueKey = dictionary.Aggregate((x, y) => x.Value > y.Value ? x : y).Key;
+        foreach (var item in dictionary)
+        {
+            if (item.Value>maxValueKey)
+            {
+                mostActiveReviewers.Add(item.Key);
+            }
+        }
+
+        return mostActiveReviewers;
     }
 
     /*
