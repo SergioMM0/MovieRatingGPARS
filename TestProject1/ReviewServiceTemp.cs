@@ -128,4 +128,44 @@ public class ReviewServiceTemp
         //Assert
         Assert.Equal(expectedOccurrenceCount,actualOccurrenceCount);
     }
+
+    [Theory]
+    [InlineData(2,1,2,3,4)]
+    [InlineData(3,1)]
+    [InlineData(1,1,3,4)]
+    [InlineData(4,1,2)]
+    [InlineData(5)]
+    public void GetReviewersByMovieTest(int movie,params int[] expectedUsers)
+    {
+        //Arrange
+        #region coolRegionOfData
+
+        BEReview[] data = new BEReview[]
+        {
+            new BEReview(1,2,5,new DateTime()),
+            new BEReview(2,2,4,new DateTime()),
+            new BEReview(3,2,4,new DateTime()),
+            new BEReview(4,2,3,new DateTime()),
+            
+            new BEReview(1,3,1,new DateTime()),
+            
+            new BEReview(1,1,2,new DateTime()),
+            new BEReview(3,1,3,new DateTime()),
+            new BEReview(4,1,3,new DateTime()),
+
+            new BEReview(1,4,5,new DateTime()),
+            new BEReview(2,4,5,new DateTime())
+        };
+        #endregion
+
+        Mock<IReviewRepository> mockRepo = new Mock<IReviewRepository>();
+        mockRepo.Setup(mockRepo => mockRepo.GetAll()).Returns(data);
+
+        ReviewService service = new ReviewService(mockRepo.Object);
+        
+        //Act
+        int[] actualUsers = service.GetReviewersByMovie(movie).ToArray();
+        //Assert
+        Assert.Equal(expectedUsers,actualUsers);
+    }
 }

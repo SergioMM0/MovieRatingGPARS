@@ -179,6 +179,8 @@ public class ReviewService : IReviewService
 
     public List<int> GetReviewersByMovie(int movie)
     {
-        throw new NotImplementedException();
+        IEnumerable<BEReview> reviewsForMovie = _repository.GetAll().Where(r => r.Movie == movie);
+        List<int> reviewersForMovie = reviewsForMovie.Select(r => r.Reviewer).ToList();
+        return reviewersForMovie;
     }
 }
