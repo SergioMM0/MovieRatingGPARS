@@ -111,7 +111,11 @@ public class UnitTest1
         
         for (int i = 0; i < reviewrsIds.Length; i++)
         {
-            fakeRepo[i].Reviewer = reviewrsIds[i];
+            fakeRepo[i] = new BEReview()
+            {
+                Reviewer = reviewrsIds[i]
+            };
+
         }
         Mock<IReviewRepository> mockRepository = new Mock<IReviewRepository>();
         mockRepository.Setup(r => r.GetAll()).Returns(fakeRepo);

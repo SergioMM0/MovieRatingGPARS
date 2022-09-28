@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Bruger\\Documents\\GitHub\\MovieRatingGPARS\\MovieRatingGPARS\\MovieRatingGPARS.csproj": {}
+    "/Users/aminaouina/Downloads/sidebar/MovieRatingGPARS/MovieRatingGPARS/MovieRatingGPARS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Bruger\\Documents\\GitHub\\MovieRatingGPARS\\MovieRatingGPARS\\MovieRatingGPARS.csproj": {
+    "/Users/aminaouina/Downloads/sidebar/MovieRatingGPARS/MovieRatingGPARS/MovieRatingGPARS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Bruger\\Documents\\GitHub\\MovieRatingGPARS\\MovieRatingGPARS\\MovieRatingGPARS.csproj",
+        "projectUniqueName": "/Users/aminaouina/Downloads/sidebar/MovieRatingGPARS/MovieRatingGPARS/MovieRatingGPARS.csproj",
         "projectName": "MovieRatingGPARS",
-        "projectPath": "C:\\Users\\Bruger\\Documents\\GitHub\\MovieRatingGPARS\\MovieRatingGPARS\\MovieRatingGPARS.csproj",
-        "packagesPath": "C:\\Users\\Bruger\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Bruger\\Documents\\GitHub\\MovieRatingGPARS\\MovieRatingGPARS\\obj\\",
+        "projectPath": "/Users/aminaouina/Downloads/sidebar/MovieRatingGPARS/MovieRatingGPARS/MovieRatingGPARS.csproj",
+        "packagesPath": "/Users/aminaouina/.nuget/packages/",
+        "outputPath": "/Users/aminaouina/Downloads/sidebar/MovieRatingGPARS/MovieRatingGPARS/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Bruger\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/Users/aminaouina/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -43,8 +43,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -53,7 +52,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/Users/aminaouina/.dotnet/sdk/6.0.302/RuntimeIdentifierGraph.json"
         }
       }
     }
