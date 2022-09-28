@@ -74,7 +74,11 @@ public class ReviewService : IReviewService
 
     public int GetNumberOfRates(int movie, int rate)
     {
-        throw new NotImplementedException();
+        IEnumerable<BEReview> reviews = _repository.GetAll()
+            .Where(r=>r.Movie==movie)
+            .Where(r=>r.Grade==rate);
+        int occurences = reviews.Count();
+        return occurences;
     }
 
     public List<int> GetMoviesWithHighestNumberOfTopRates()

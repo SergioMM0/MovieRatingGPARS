@@ -1,12 +1,18 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=5ea7574a_002Db546_002D45bb_002Db0db_002D1d3d7efa420f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="UnitTest1 #5" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::C52CC075-A006-49CC-8068-D519E6F0F534::net6.0::TestProject1.UnitTest1&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::C52CC075-A006-49CC-8068-D519E6F0F534::net6.0::TestProject1.ReviewServiceTemp&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=61a9fd69_002D8081_002D4dfd_002D8adf_002D747ba6c50fd2/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ReviewServiceTemp" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::C52CC075-A006-49CC-8068-D519E6F0F534::net6.0::TestProject1.ReviewServiceTemp&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f0504458_002D09cb_002D4725_002D9cae_002D51f0e83e2a8a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CreateReviewServiceWithNullRepositoryExceptArgumentException" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::C52CC075-A006-49CC-8068-D519E6F0F534::net6.0::TestProject1.UnitTest1&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::C52CC075-A006-49CC-8068-D519E6F0F534::net6.0::TestProject1.ReviewServiceTemp&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f0504458_002D09cb_002D4725_002D9cae_002D51f0e83e2a8a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="CreateReviewServiceWithNullRepositoryExceptArgumentException" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::C52CC075-A006-49CC-8068-D519E6F0F534::net6.0::TestProject1.UnitTest1&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::C52CC075-A006-49CC-8068-D519E6F0F534::net6.0::TestProject1.ReviewServiceTemp&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

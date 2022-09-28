@@ -82,4 +82,50 @@ public class ReviewServiceTemp
         //Assert
         Assert.Equal(expectedMovieIds,coolData);
     }
+
+    [Theory]
+    [InlineData(1,3,2)]
+    [InlineData(2,0,0)]
+    [InlineData(3,2,1)]
+    [InlineData(4,5,4)]
+    [InlineData(5,0,0)]
+    public void GetNumberOfRatesTest(int movie,int rating,int expectedOccurrenceCount)
+    {
+        //Arrange
+        #region coolRegionOfData
+
+        BEReview[] data = new BEReview[]
+        {
+            new BEReview(1,2,5,new DateTime()),
+            new BEReview(1,2,4,new DateTime()),
+            new BEReview(1,2,4,new DateTime()),
+            new BEReview(1,2,3,new DateTime()),
+            
+            new BEReview(1,3,1,new DateTime()),
+            new BEReview(1,3,2,new DateTime()),
+            new BEReview(1,3,1,new DateTime()),
+            new BEReview(1,3,0,new DateTime()),
+            new BEReview(1,3,0,new DateTime()),
+            
+            new BEReview(1,1,2,new DateTime()),
+            new BEReview(1,1,3,new DateTime()),
+            new BEReview(1,1,3,new DateTime()),
+            new BEReview(1,1,4,new DateTime()),
+            
+            new BEReview(1,4,5,new DateTime()),
+            new BEReview(1,4,5,new DateTime()),
+            new BEReview(1,4,5,new DateTime()),
+            new BEReview(1,4,5,new DateTime()),
+        };
+        #endregion
+
+        Mock<IReviewRepository> mockRepo = new Mock<IReviewRepository>();
+        mockRepo.Setup(mockRepo => mockRepo.GetAll()).Returns(data);
+        ReviewService service = new ReviewService(mockRepo.Object);
+        
+        //Act
+        int actualOccurrenceCount = service.GetNumberOfRates(movie,rating);
+        //Assert
+        Assert.Equal(expectedOccurrenceCount,actualOccurrenceCount);
+    }
 }
