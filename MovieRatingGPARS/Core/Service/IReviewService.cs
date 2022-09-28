@@ -3,7 +3,6 @@ namespace MovieRatingGPARS.Core.Service;
 public interface IReviewService
 {
     int GetNumberOfReviewsFromReviewer(int reviewer);
-    
     double GetAverageRateFromReviewer(int reviewer);
     
     int GetNumberOfRatesByReviewer(int reviewer, int rate);
@@ -22,4 +21,7 @@ public interface IReviewService
     
     List<int> GetTopMoviesByReviewer(int reviewer);
     
-    List<int> GetReviewersByMovie(int movie);}
+    List<int> GetReviewersByMovie(int movie);
+    
+}
+
