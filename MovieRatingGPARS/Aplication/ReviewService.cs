@@ -29,6 +29,7 @@ public class ReviewService : IReviewService
 
     public double GetAverageRateFromReviewer(int reviewer)
     {
+<<<<<<< Updated upstream
         throw new NotImplementedException();
     }
 
@@ -45,6 +46,29 @@ public class ReviewService : IReviewService
         }
 
         return count;
+=======
+        var count = 0;
+        var total = 0;
+        foreach (BEReview review in _repository.GetAll())
+        {
+            if (review.Reviewer == reviewer)
+            {
+                count++;
+                total += review.Grade;
+            }
+        }
+
+        if (count!=0)
+            return total/count;
+        
+            return 0;
+        
+    }
+
+    public int GetNumberOfRatesByReviewer(int reviewer, int rate)
+    {
+        throw new NotImplementedException();
+>>>>>>> Stashed changes
     }
 
     public int GetNumberOfReviews(int movie)
