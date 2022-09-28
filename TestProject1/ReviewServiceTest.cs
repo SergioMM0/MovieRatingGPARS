@@ -125,7 +125,7 @@ public class UnitTest1
 
         //Assert
         
-        Assert.Equal(result,mostActiveReviewers);
+        Assert.Same(result,mostActiveReviewers);
         Assert.True(result.Length==mostActiveReviewers.Length);
         
         
