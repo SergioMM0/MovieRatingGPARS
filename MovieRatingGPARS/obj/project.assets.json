@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "/Users/aminaouina/.nuget/packages/": {}
+    "C:\\Users\\Bruger\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/aminaouina/Downloads/sidebar/MovieRatingGPARS/MovieRatingGPARS/MovieRatingGPARS.csproj",
+      "projectUniqueName": "C:\\Users\\Bruger\\Documents\\GitHub\\MovieRatingGPARS\\MovieRatingGPARS\\MovieRatingGPARS.csproj",
       "projectName": "MovieRatingGPARS",
-      "projectPath": "/Users/aminaouina/Downloads/sidebar/MovieRatingGPARS/MovieRatingGPARS/MovieRatingGPARS.csproj",
-      "packagesPath": "/Users/aminaouina/.nuget/packages/",
-      "outputPath": "/Users/aminaouina/Downloads/sidebar/MovieRatingGPARS/MovieRatingGPARS/obj/",
+      "projectPath": "C:\\Users\\Bruger\\Documents\\GitHub\\MovieRatingGPARS\\MovieRatingGPARS\\MovieRatingGPARS.csproj",
+      "packagesPath": "C:\\Users\\Bruger\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Bruger\\Documents\\GitHub\\MovieRatingGPARS\\MovieRatingGPARS\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/aminaouina/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Bruger\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -49,7 +49,8 @@
           "net47",
           "net471",
           "net472",
-          "net48"
+          "net48",
+          "net481"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -58,7 +59,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/Users/aminaouina/.dotnet/sdk/6.0.302/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
