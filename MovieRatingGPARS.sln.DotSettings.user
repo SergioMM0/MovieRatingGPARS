@@ -10,6 +10,12 @@
     &lt;TestId&gt;xUnit::C52CC075-A006-49CC-8068-D519E6F0F534::net6.0::TestProject1.ReviewServiceTemp&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d90172ba_002Dc39d_002D4c41_002Dbdf9_002Db1a8b0aabaa0/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="UnitTest1 #6" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::C52CC075-A006-49CC-8068-D519E6F0F534::net6.0::TestProject1.UnitTest1&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::C52CC075-A006-49CC-8068-D519E6F0F534::net6.0::TestProject1.ReviewServiceTemp&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f0504458_002D09cb_002D4725_002D9cae_002D51f0e83e2a8a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="CreateReviewServiceWithNullRepositoryExceptArgumentException" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;xUnit::C52CC075-A006-49CC-8068-D519E6F0F534::net6.0::TestProject1.UnitTest1&lt;/TestId&gt;&#xD;
