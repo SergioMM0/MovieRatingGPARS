@@ -100,6 +100,9 @@ public class UnitTest1
     
     [Theory]
     [InlineData(new int[] { 1, 3, 3, 2, 2, 4, 8 },new int []{2,3})]
+    [InlineData(new int[] { 1, 2, 3, 1, 1, 1, 2 },new int []{2})]
+    [InlineData(new int[] { 1, 2, 3, 1, 2, 3, 0 },new int []{1,2,3})]
+
     
     public void GetMostProductiveReviewers(int [] reviewrsIds,int[] mostActiveReviewers)
     {
@@ -124,6 +127,8 @@ public class UnitTest1
         
         Assert.Equal(result,mostActiveReviewers);
         Assert.True(result.Length==mostActiveReviewers.Length);
+        
+        
         mockRepository.Verify(r => r.GetAll(), Times.Once);
     }
 
