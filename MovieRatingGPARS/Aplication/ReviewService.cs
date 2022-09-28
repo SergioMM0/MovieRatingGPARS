@@ -117,14 +117,16 @@ public class ReviewService : IReviewService
         return mostActiveReviewers;
     }
 
+    
     /*
-     * Working currently but not sure what will happen in the case of movies with the same ratings
+     * Method changed to allow duplicate values and if such an occurrence happens it will then look for the 2nd value
+     * to sort by which in this case we choose the id, so it will sort by the review grade descending and after that by
+     * the id in ascending order
      */
     public List<int> GetTopRatedMovies(int amount)
     {
-        //Create a sorted list with the double(rating) being the key
-        //and the movie id being the value in the kvp.
-        SortedList<double, int> ratingList = new SortedList<double, int>();
+        //Create a list of KVP to map the key(being the average rating, a double) with the value (movie id)
+        List<KeyValuePair<double, int>> ratingList = new List<KeyValuePair<double, int>>();
         IEnumerable<BEReview> reviews = _repository.GetAll().ToList();
 
         //We get all the unique id's of the movies, as to not calculate the average for the same movie twice
@@ -149,15 +151,19 @@ public class ReviewService : IReviewService
             //Check if any ratings actually exist, otherwise a divide by zero will occur;
             if (count!=0)
                 averageRating = (double)ratingSum / count;
-            ratingList.Add(averageRating,uniqueMovieIds[i]);
+            ratingList.Add(new KeyValuePair<double, int>(averageRating,uniqueMovieIds[i]));
         }
 
-        List<double> keysInOrder = ratingList.Keys.OrderByDescending(k=>k).ToList();
-        List<int> ratingsInOrder = retrieveValuesByKeys(keysInOrder,ratingList);
+        //Order the list 1st by the key (rating) in a descending order, and just in case of exact same average ratings
+        //We also sort by id's in an ascending order
+        ratingList = ratingList.OrderByDescending(pair => pair.Key).ThenBy(pair => pair.Value).ToList();
+        //Select only the values from the kvp list
+        List<int> moviesInOrder = ratingList.Select(pair => pair.Value).ToList();
 
-        return ratingsInOrder.Take(amount).ToList();
+        //Take the top N movies of the list
+        return moviesInOrder.Take(amount).ToList();
     }
-
+    
     private List<int> retrieveValuesByKeys(List<double> keysInOrder, SortedList<double, int> source)
     {
         List<int> valuesInOrder = new List<int>();

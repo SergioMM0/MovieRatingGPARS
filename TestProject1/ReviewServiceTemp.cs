@@ -39,11 +39,15 @@ public class ReviewServiceTemp
     }
 
     //9
-    [Fact]
-    public void GetTopRatedMovies()
+    [Theory]
+    [InlineData(1,4)]
+    [InlineData(2,4,2)]
+    [InlineData(3,4,2,6)]
+    [InlineData(0)]
+    public void GetTopRatedMovies(int countOfMoviesRequested,params int[] expectedTopMovies)
     {
         //Arrange
-        int movieCount = 3;
+        int movieCount = 4;
         
         #region coolRegionOfData
 
@@ -69,20 +73,25 @@ public class ReviewServiceTemp
             new BEReview(1,4,5,new DateTime()),
             new BEReview(1,4,5,new DateTime()),
             new BEReview(1,4,5,new DateTime()),
+            
+            new BEReview(1,6,5,new DateTime()),
+            new BEReview(1,6,4,new DateTime()),
+            new BEReview(1,6,4,new DateTime()),
+            new BEReview(1,6,3,new DateTime()),
         };
         #endregion
 
-        List<int> expectedMovieIds = new List<int>() {4,2,1};
 
         Mock<IReviewRepository> mockRepository = new Mock<IReviewRepository>();
         mockRepository.Setup(r => r.GetAll()).Returns(data);
         
         ReviewService service = new ReviewService(mockRepository.Object);
+        
         //Act
-
-        List<int> coolData = service.GetTopRatedMovies(movieCount);
+        int[] coolData = service.GetTopRatedMovies(countOfMoviesRequested).ToArray();
+        
         //Assert
-        Assert.Equal(expectedMovieIds,coolData);
+        Assert.Equal(expectedTopMovies,coolData);
     }
 
     //6
