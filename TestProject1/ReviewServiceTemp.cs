@@ -8,12 +8,13 @@ namespace TestProject1;
 public class ReviewServiceTemp
 {
     
+    //3
     [Theory]
     [InlineData(1,1,1)]
     [InlineData(1,3,3)]
     [InlineData(1,4,2)]
     [InlineData(1,5,0)]
-    public void GetAverageRateFromReviewer(int reviewer,int rating,int expectedCount)
+    public void GetNumberOfRatesByReviewer(int reviewer,int rating,int expectedCount)
     {
         //Arrange
         BEReview[] fakeRepo = new BEReview[]
@@ -37,6 +38,7 @@ public class ReviewServiceTemp
         
     }
 
+    //9
     [Fact]
     public void GetTopRatedMovies()
     {
@@ -83,6 +85,7 @@ public class ReviewServiceTemp
         Assert.Equal(expectedMovieIds,coolData);
     }
 
+    //6
     [Theory]
     [InlineData(1,3,2)]
     [InlineData(2,0,0)]
@@ -129,6 +132,7 @@ public class ReviewServiceTemp
         Assert.Equal(expectedOccurrenceCount,actualOccurrenceCount);
     }
 
+    //11
     [Theory]
     [InlineData(2,1,2,3,4)]
     [InlineData(3,1)]
