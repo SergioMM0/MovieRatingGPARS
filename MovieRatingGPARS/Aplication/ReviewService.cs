@@ -97,7 +97,7 @@ public class ReviewService : IReviewService
             
             for (int j = i+1; j < _repository.GetAll().Length-1; j++)
             {
-                if (_repository.GetAll()[j]==_repository.GetAll()[i])
+                if (_repository.GetAll()[j].Reviewer==_repository.GetAll()[i].Reviewer)
                 {
                     dictionary[_repository.GetAll()[i].Reviewer] = int.Parse(dictionary[_repository.GetAll()[i].Reviewer].ToString())+1;
                 }
@@ -105,10 +105,10 @@ public class ReviewService : IReviewService
         }
 
         List<int> mostActiveReviewers=new List<int>();
-        var maxValueKey = dictionary.Aggregate((x, y) => x.Value > y.Value ? x : y).Key;
+        var maxValueKey = dictionary.Aggregate((x, y) => x.Value > y.Value ? x : y).Value;
         foreach (var item in dictionary)
         {
-            if (item.Value>maxValueKey)
+            if (item.Value>=maxValueKey)
             {
                 mostActiveReviewers.Add(item.Key);
             }

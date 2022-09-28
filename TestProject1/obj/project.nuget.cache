@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "+8opEe8HYqB7dErbhc8mteXoJoa99PTMKmFfhNamPneSw91nk04WATvwVHer7uUSd6JtKTs4VqMFSk65huwf9g==",
+  "dgSpecHash": "j4BuRh/qmA9KE0BqGB02W+05wRP0ThvCulennRvJGNwAJ7c3xHq9QMdGCNUefR3CIFXHPkPbVb3HOvYLQ4L00w==",
   "success": true,
   "projectFilePath": "/Users/aminaouina/Downloads/sidebar/MovieRatingGPARS/TestProject1/TestProject1.csproj",
   "expectedPackageFiles": [
@@ -93,7 +93,7 @@
     "/Users/aminaouina/.nuget/packages/system.xml.xdocument/4.3.0/system.xml.xdocument.4.3.0.nupkg.sha512",
     "/Users/aminaouina/.nuget/packages/xunit/2.4.1/xunit.2.4.1.nupkg.sha512",
     "/Users/aminaouina/.nuget/packages/xunit.abstractions/2.0.3/xunit.abstractions.2.0.3.nupkg.sha512",
-    "/Users/aminaouina/.nuget/packages/xunit.analyzers/0.10.0/xunit.analyzers.0.10.0.nupkg.sha512",
+    "/Users/aminaouina/.nuget/packages/xunit.analyzers/1.0.0/xunit.analyzers.1.0.0.nupkg.sha512",
     "/Users/aminaouina/.nuget/packages/xunit.assert/2.4.1/xunit.assert.2.4.1.nupkg.sha512",
     "/Users/aminaouina/.nuget/packages/xunit.core/2.4.1/xunit.core.2.4.1.nupkg.sha512",
     "/Users/aminaouina/.nuget/packages/xunit.extensibility.core/2.4.1/xunit.extensibility.core.2.4.1.nupkg.sha512",
