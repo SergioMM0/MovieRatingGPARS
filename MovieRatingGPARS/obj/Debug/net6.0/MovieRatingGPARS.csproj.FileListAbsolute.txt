@@ -10,3 +10,15 @@ C:\Users\Sergio M\RiderProjects\MovieRatingGPARS\MovieRatingGPARS\obj\Debug\net6
 C:\Users\Sergio M\RiderProjects\MovieRatingGPARS\MovieRatingGPARS\obj\Debug\net6.0\refint\MovieRatingGPARS.dll
 C:\Users\Sergio M\RiderProjects\MovieRatingGPARS\MovieRatingGPARS\obj\Debug\net6.0\MovieRatingGPARS.pdb
 C:\Users\Sergio M\RiderProjects\MovieRatingGPARS\MovieRatingGPARS\obj\Debug\net6.0\ref\MovieRatingGPARS.dll
+C:\Users\Bruger\Documents\GitHub\MovieRatingGPARS\MovieRatingGPARS\bin\Debug\net6.0\MovieRatingGPARS.deps.json
+C:\Users\Bruger\Documents\GitHub\MovieRatingGPARS\MovieRatingGPARS\bin\Debug\net6.0\MovieRatingGPARS.dll
+C:\Users\Bruger\Documents\GitHub\MovieRatingGPARS\MovieRatingGPARS\bin\Debug\net6.0\MovieRatingGPARS.pdb
+C:\Users\Bruger\Documents\GitHub\MovieRatingGPARS\MovieRatingGPARS\obj\Debug\net6.0\MovieRatingGPARS.csproj.AssemblyReference.cache
+C:\Users\Bruger\Documents\GitHub\MovieRatingGPARS\MovieRatingGPARS\obj\Debug\net6.0\MovieRatingGPARS.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Bruger\Documents\GitHub\MovieRatingGPARS\MovieRatingGPARS\obj\Debug\net6.0\MovieRatingGPARS.AssemblyInfoInputs.cache
+C:\Users\Bruger\Documents\GitHub\MovieRatingGPARS\MovieRatingGPARS\obj\Debug\net6.0\MovieRatingGPARS.AssemblyInfo.cs
+C:\Users\Bruger\Documents\GitHub\MovieRatingGPARS\MovieRatingGPARS\obj\Debug\net6.0\MovieRatingGPARS.csproj.CoreCompileInputs.cache
+C:\Users\Bruger\Documents\GitHub\MovieRatingGPARS\MovieRatingGPARS\obj\Debug\net6.0\MovieRatingGPARS.dll
+C:\Users\Bruger\Documents\GitHub\MovieRatingGPARS\MovieRatingGPARS\obj\Debug\net6.0\refint\MovieRatingGPARS.dll
+C:\Users\Bruger\Documents\GitHub\MovieRatingGPARS\MovieRatingGPARS\obj\Debug\net6.0\MovieRatingGPARS.pdb
+C:\Users\Bruger\Documents\GitHub\MovieRatingGPARS\MovieRatingGPARS\obj\Debug\net6.0\ref\MovieRatingGPARS.dll
