@@ -34,6 +34,52 @@ public class ReviewServiceTemp
         int actualCount = service.GetNumberOfRatesByReviewer(reviewer, rating);
         //Assert
         Assert.Equal(expectedCount,actualCount);
+        
+    }
 
+    [Fact]
+    public void GetTopRatedMovies()
+    {
+        //Arrange
+        int movieCount = 3;
+        
+        #region coolRegionOfData
+
+        BEReview[] data = new BEReview[]
+        {
+            new BEReview(1,2,5,new DateTime()),
+            new BEReview(1,2,4,new DateTime()),
+            new BEReview(1,2,4,new DateTime()),
+            new BEReview(1,2,3,new DateTime()),
+            
+            new BEReview(1,3,1,new DateTime()),
+            new BEReview(1,3,2,new DateTime()),
+            new BEReview(1,3,1,new DateTime()),
+            new BEReview(1,3,0,new DateTime()),
+            new BEReview(1,3,0,new DateTime()),
+            
+            new BEReview(1,1,2,new DateTime()),
+            new BEReview(1,1,3,new DateTime()),
+            new BEReview(1,1,3,new DateTime()),
+            new BEReview(1,1,4,new DateTime()),
+            
+            new BEReview(1,4,5,new DateTime()),
+            new BEReview(1,4,5,new DateTime()),
+            new BEReview(1,4,5,new DateTime()),
+            new BEReview(1,4,5,new DateTime()),
+        };
+        #endregion
+
+        List<int> expectedMovieIds = new List<int>() {4,2,1};
+
+        Mock<IReviewRepository> mockRepository = new Mock<IReviewRepository>();
+        mockRepository.Setup(r => r.GetAll()).Returns(data);
+        
+        ReviewService service = new ReviewService(mockRepository.Object);
+        //Act
+
+        List<int> coolData = service.GetTopRatedMovies(movieCount);
+        //Assert
+        Assert.Equal(expectedMovieIds,coolData);
     }
 }
