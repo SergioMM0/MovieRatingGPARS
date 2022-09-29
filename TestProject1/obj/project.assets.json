@@ -6118,11 +6118,16 @@
     ]
   },
   "packageFolders": {
+<<<<<<< Updated upstream
     "/Users/aminaouina/.nuget/packages/": {}
+=======
+    "C:\\Users\\Sergio M\\.nuget\\packages\\": {}
+>>>>>>> Stashed changes
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< Updated upstream
       "projectUniqueName": "/Users/aminaouina/Downloads/sidebar/MovieRatingGPARS/TestProject1/TestProject1.csproj",
       "projectName": "TestProject1",
       "projectPath": "/Users/aminaouina/Downloads/sidebar/MovieRatingGPARS/TestProject1/TestProject1.csproj",
@@ -6131,6 +6136,16 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/aminaouina/.nuget/NuGet/NuGet.Config"
+=======
+      "projectUniqueName": "C:\\Users\\Sergio M\\RiderProjects\\MovieRatingGPARS\\TestProject1\\TestProject1.csproj",
+      "projectName": "TestProject1",
+      "projectPath": "C:\\Users\\Sergio M\\RiderProjects\\MovieRatingGPARS\\TestProject1\\TestProject1.csproj",
+      "packagesPath": "C:\\Users\\Sergio M\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Sergio M\\RiderProjects\\MovieRatingGPARS\\TestProject1\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\Sergio M\\AppData\\Roaming\\NuGet\\NuGet.Config"
+>>>>>>> Stashed changes
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -6142,8 +6157,13 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+<<<<<<< Updated upstream
             "/Users/aminaouina/Downloads/sidebar/MovieRatingGPARS/MovieRatingGPARS/MovieRatingGPARS.csproj": {
               "projectPath": "/Users/aminaouina/Downloads/sidebar/MovieRatingGPARS/MovieRatingGPARS/MovieRatingGPARS.csproj"
+=======
+            "C:\\Users\\Sergio M\\RiderProjects\\MovieRatingGPARS\\MovieRatingGPARS\\MovieRatingGPARS.csproj": {
+              "projectPath": "C:\\Users\\Sergio M\\RiderProjects\\MovieRatingGPARS\\MovieRatingGPARS\\MovieRatingGPARS.csproj"
+>>>>>>> Stashed changes
             }
           }
         }
