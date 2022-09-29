@@ -2,6 +2,7 @@
   "format": 1,
   "restore": {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     "/Users/aminaouina/Downloads/sidebar/MovieRatingGPARS/TestProject1/TestProject1.csproj": {}
   },
   "projects": {
@@ -16,6 +17,22 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/aminaouina/.nuget/NuGet/NuGet.Config"
+=======
+    "C:\\Users\\Sergio M\\RiderProjects\\MovieRatingGPARS\\TestProject1\\TestProject1.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Sergio M\\RiderProjects\\MovieRatingGPARS\\MovieRatingGPARS\\MovieRatingGPARS.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Sergio M\\RiderProjects\\MovieRatingGPARS\\MovieRatingGPARS\\MovieRatingGPARS.csproj",
+        "projectName": "MovieRatingGPARS",
+        "projectPath": "C:\\Users\\Sergio M\\RiderProjects\\MovieRatingGPARS\\MovieRatingGPARS\\MovieRatingGPARS.csproj",
+        "packagesPath": "C:\\Users\\Sergio M\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sergio M\\RiderProjects\\MovieRatingGPARS\\MovieRatingGPARS\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Sergio M\\AppData\\Roaming\\NuGet\\NuGet.Config"
+>>>>>>> Stashed changes
 =======
     "C:\\Users\\Sergio M\\RiderProjects\\MovieRatingGPARS\\TestProject1\\TestProject1.csproj": {}
   },
@@ -74,6 +91,7 @@
       }
     },
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     "/Users/aminaouina/Downloads/sidebar/MovieRatingGPARS/TestProject1/TestProject1.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -85,6 +103,19 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/aminaouina/.nuget/NuGet/NuGet.Config"
+=======
+    "C:\\Users\\Sergio M\\RiderProjects\\MovieRatingGPARS\\TestProject1\\TestProject1.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Sergio M\\RiderProjects\\MovieRatingGPARS\\TestProject1\\TestProject1.csproj",
+        "projectName": "TestProject1",
+        "projectPath": "C:\\Users\\Sergio M\\RiderProjects\\MovieRatingGPARS\\TestProject1\\TestProject1.csproj",
+        "packagesPath": "C:\\Users\\Sergio M\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sergio M\\RiderProjects\\MovieRatingGPARS\\TestProject1\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Sergio M\\AppData\\Roaming\\NuGet\\NuGet.Config"
+>>>>>>> Stashed changes
 =======
     "C:\\Users\\Sergio M\\RiderProjects\\MovieRatingGPARS\\TestProject1\\TestProject1.csproj": {
       "version": "1.0.0",
@@ -110,8 +141,13 @@
             "targetAlias": "net6.0",
             "projectReferences": {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
               "/Users/aminaouina/Downloads/sidebar/MovieRatingGPARS/MovieRatingGPARS/MovieRatingGPARS.csproj": {
                 "projectPath": "/Users/aminaouina/Downloads/sidebar/MovieRatingGPARS/MovieRatingGPARS/MovieRatingGPARS.csproj"
+=======
+              "C:\\Users\\Sergio M\\RiderProjects\\MovieRatingGPARS\\MovieRatingGPARS\\MovieRatingGPARS.csproj": {
+                "projectPath": "C:\\Users\\Sergio M\\RiderProjects\\MovieRatingGPARS\\MovieRatingGPARS\\MovieRatingGPARS.csproj"
+>>>>>>> Stashed changes
 =======
               "C:\\Users\\Sergio M\\RiderProjects\\MovieRatingGPARS\\MovieRatingGPARS\\MovieRatingGPARS.csproj": {
                 "projectPath": "C:\\Users\\Sergio M\\RiderProjects\\MovieRatingGPARS\\MovieRatingGPARS\\MovieRatingGPARS.csproj"

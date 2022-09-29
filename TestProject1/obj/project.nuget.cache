@@ -1,6 +1,7 @@
 {
   "version": 2,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   "dgSpecHash": "j4BuRh/qmA9KE0BqGB02W+05wRP0ThvCulennRvJGNwAJ7c3xHq9QMdGCNUefR3CIFXHPkPbVb3HOvYLQ4L00w==",
   "success": true,
   "projectFilePath": "/Users/aminaouina/Downloads/sidebar/MovieRatingGPARS/TestProject1/TestProject1.csproj",
@@ -105,6 +106,12 @@
   "success": true,
   "projectFilePath": "C:\\Users\\Sergio M\\RiderProjects\\MovieRatingGPARS\\TestProject1\\TestProject1.csproj",
   "expectedPackageFiles": [
+=======
+  "dgSpecHash": "yXHLdddhkl0BN1eTOKOQ1900YRB1P4wdeOKQzM9DxTHleAsbJ4JpMlV55I7ITcZDTSV2L+WqaO0U1ucu5QuLVA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Sergio M\\RiderProjects\\MovieRatingGPARS\\TestProject1\\TestProject1.csproj",
+  "expectedPackageFiles": [
+>>>>>>> Stashed changes
     "C:\\Users\\Sergio M\\.nuget\\packages\\castle.core\\5.1.0\\castle.core.5.1.0.nupkg.sha512",
     "C:\\Users\\Sergio M\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\Sergio M\\.nuget\\packages\\microsoft.codecoverage\\17.1.0\\microsoft.codecoverage.17.1.0.nupkg.sha512",
@@ -200,6 +207,9 @@
     "C:\\Users\\Sergio M\\.nuget\\packages\\xunit.extensibility.core\\2.4.1\\xunit.extensibility.core.2.4.1.nupkg.sha512",
     "C:\\Users\\Sergio M\\.nuget\\packages\\xunit.extensibility.execution\\2.4.1\\xunit.extensibility.execution.2.4.1.nupkg.sha512",
     "C:\\Users\\Sergio M\\.nuget\\packages\\xunit.runner.visualstudio\\2.4.3\\xunit.runner.visualstudio.2.4.3.nupkg.sha512"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   ],
   "logs": []
