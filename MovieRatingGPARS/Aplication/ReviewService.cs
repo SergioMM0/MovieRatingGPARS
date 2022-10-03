@@ -17,8 +17,7 @@ public class ReviewService : IReviewService
 
     public int GetNumberOfReviewsFromReviewer(int reviewer)
     {
-        IEnumerable<BEReview> reviews = _repository.GetAll().Where(review => review.Reviewer == reviewer);
-        return reviews.Count();
+        return _repository.GetAll().Count(review => review.Reviewer == reviewer);
     }
 
     public int GetNumberOfRatesByReviewer(int reviewer, int rate)
@@ -28,7 +27,6 @@ public class ReviewService : IReviewService
     public  double GetAverageRateFromReviewer(int reviewer)
     {
         IEnumerable<BEReview> reviews = _repository.GetAll().Where(review => review.Reviewer == reviewer);
-        
         return reviews.Sum(review => review.Grade) / reviews.Count();
     }
     
@@ -48,8 +46,7 @@ public class ReviewService : IReviewService
         IEnumerable<BEReview> reviews = _repository.GetAll()
             .Where(r=>r.Movie==movie)
             .Where(r=>r.Grade==rate);
-        int occurrences = reviews.Count();
-        return occurrences;
+        return reviews.Count();
     }
 
     //method implemented but still needs to be tested.
@@ -147,8 +144,7 @@ public class ReviewService : IReviewService
     public List<int> GetTopMoviesByReviewer(int reviewer)
     {
         IEnumerable reviews = _repository.GetAll().Where(review => review.Reviewer == reviewer);
-        List<BEReview> reviewsArray = reviews.Cast<BEReview>().ToList();
-        return reviewsArray.OrderBy(review => review.Grade).ThenBy(review =>review.ReviewDate).Select(review => review.Reviewer).ToList();
+        return reviews.Cast<BEReview>().ToList().OrderBy(review => review.Grade).ThenBy(review =>review.ReviewDate).Select(review => review.Reviewer).ToList();
     }
 
     public List<int> GetReviewersByMovie(int movie)
