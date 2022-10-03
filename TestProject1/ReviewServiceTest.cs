@@ -89,15 +89,11 @@ public class UnitTest1
         IReviewService service = new ReviewService(mockRepository.Object);
 
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
         //Act
 
         double result = service.GetAverageRateFromReviewer(reviewer);
 
         //Assert
-<<<<<<< Updated upstream
         
         Assert.Equal(result, expected);
         mockRepository.Verify(r => r.GetAll(), Times.Once);
@@ -126,36 +122,10 @@ public class UnitTest1
         Mock<IReviewRepository> mockRepository = new Mock<IReviewRepository>();
         mockRepository.Setup(r => r.GetAll()).Returns(fakeRepo);
         
-=======
-        
-        Assert.Equal(result, expected);
-        mockRepository.Verify(r => r.GetAll(), Times.Once);
-    }
-    [Theory]
-    [InlineData()]
-    public void GetMostProductiveReviewers(List<int>expected)
-    {
-        //Arrange
-        BEReview[] fakeRepo = new BEReview[]
-        {
-            //Reviewer 1 has an average of 5
-            new BEReview() { Reviewer = 1, Movie = 1, Grade = 10, ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 1, Movie = 2, Grade = 0, ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 2, Movie = 1, Grade = 4, ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 2, Movie = 2, Grade = 2, ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 1, Movie = 3, Grade = 10, ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 2, Movie = 3, Grade = 3, ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 1, Movie = 4, Grade = 0, ReviewDate = new DateTime() }
-        };
-        Mock<IReviewRepository> mockRepository = new Mock<IReviewRepository>();
-        mockRepository.Setup(r => r.GetAll()).Returns(fakeRepo);
-        
->>>>>>> Stashed changes
         IReviewService service = new ReviewService(mockRepository.Object);
 
 
         //Act
-<<<<<<< Updated upstream
  
         var result = service.GetMostProductiveReviewers();
 
@@ -197,16 +167,6 @@ public class UnitTest1
 
 
         //Act
-
-        List<int> result = service.GetMostProductiveReviewers();
-
-        
-
-        //Assert
-        
-        Assert.Contains()
->>>>>>> Stashed changes
-=======
 
         List<int> result = service.GetMostProductiveReviewers();
 
