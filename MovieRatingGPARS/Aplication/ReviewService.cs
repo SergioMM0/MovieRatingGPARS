@@ -171,11 +171,24 @@ public class ReviewService : IReviewService
         return valuesInOrder;
 
     }*/
-    //method implemented but still needs to be tested.
+
+    //10 
     public List<int> GetTopMoviesByReviewer(int reviewer)
     {
+        IEnumerable<BEReview> reviews = _repository.GetAll().Where(review => review.Reviewer == reviewer);
+        if (reviews.ToList().Count == 0)
+        {
+            throw new InvalidOperationException("This reviewer has no reviews yet");
+        }
+
+        reviews.ToList().OrderByDescending(review => review.Grade).ThenByDescending(review => review.ReviewDate);
+        return reviews.Select(review => review.Movie).ToList();
+        
+        
+        /*
         IEnumerable reviews = _repository.GetAll().Where(review => review.Reviewer == reviewer);
-        return reviews.Cast<BEReview>().ToList().OrderBy(review => review.Grade).ThenBy(review =>review.ReviewDate).Select(review => review.Reviewer).ToList();
+        return reviews.Cast<BEReview>().ToList().OrderBy(review => review.Grade).ThenBy(review =>review.ReviewDate).Select(review => review.Movie).ToList();
+         */
     }
 
     public List<int> GetReviewersByMovie(int movie)

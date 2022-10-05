@@ -215,7 +215,6 @@ public class UnitTest1
     [Theory]
     [InlineData(new int[]{1,2,3,4,5,6}, new int[]{2,5,5,4,0,5}, new int[]{2,3,6})]
     [InlineData(new int[]{1,2,3,4,5,6}, new int[]{2,3,4,5,0,1}, new int[]{4})]
-
     public void GetMoviesWithHighestNumberOfTopRates(int[] movieId, int[] grade, int[] expected)
     {
         //Arrange
@@ -339,8 +338,121 @@ public class UnitTest1
         Assert.Equal(expectedTopMovies,coolData);
     }
     
-    //10
+    //10 .
+
+    [Fact]
+    public void GetTopMoviesByReviewerThrowsInvalidOperationExceptionWhenReviewerHasNoReviews()
+    {
+        var reviewerWithNoReviews = 1; 
+        
+        //Initializes a fakeRepository
+        var fakeRepo = new BEReview[]
+        {
+            new BEReview(2,3,1,new DateTime()),
+            new BEReview(2,3,2,new DateTime()),
+            new BEReview(3,3,1,new DateTime()),
+            new BEReview(4,3,0,new DateTime()),
+            new BEReview(5,3,0,new DateTime())
+        };
+
+        //Creates a mockRepository and setting it up
+        Mock<IReviewRepository> mockRepository = new Mock<IReviewRepository>();
+        mockRepository.Setup(r => r.GetAll()).Returns(fakeRepo);
+        
+        //Initializes the service with the given mockRepository
+        IReviewService service = new ReviewService(mockRepository.Object);
+
+        //Act & Assert
+        //Assert that the method will throw an InvalidOperationException when the given reviewer has no reviews yet
+        Assert.Throws<InvalidOperationException>(() => service.GetTopMoviesByReviewer(reviewerWithNoReviews));
+    }
     
+    //Setting up the data to be tested afterwards (InLineData didn't allow the proper testing for DateTime, so 
+    //I decided to use MemberData
+    //Documentation at (https://hamidmosalla.com/2017/02/25/xunit-theory-working-with-inlinedata-memberdata-classdata/)
+    
+    public static readonly object[][] BeReviewsWithOnlyOneMovie =
+    {
+        //Each object will provide the data needed for each scenario
+        //1st scenario
+        new object[] { new int[] //reviewerId
+        {
+            1,2,2,3,3,4,4,5,5
+        }, new int[] //MovieId
+        {
+            1,1,2,1,2,1,2,1,2
+        },new int[] //ExpectedListToBeReturned
+        {
+            1
+        },new DateTime[] //Movie dates
+        {
+            new DateTime(2010, 10, 2),
+            new DateTime(2010, 10, 2),
+            new DateTime(2008,10,30),
+            new DateTime(2010, 10, 2),
+            new DateTime(2008,10,30),
+            new DateTime(2010, 10, 2),
+            new DateTime(2008,10,30),
+            new DateTime(2010, 10, 2),
+            new DateTime(2008,10,30),
+        }},
+        //2nd scenario
+        new object[] { new int[] //reviewerId
+        {
+            1,1,1,1,3,4,4,5,5
+        }, new int[] //MovieId
+        {
+            1,2,3,4,1,1,2,1,2
+        },new int[] //ExpectedListToBeReturned
+        {
+            3,2,4,1
+        },new DateTime[] //Movie dates
+        {
+            new DateTime(2010, 10, 2),
+            new DateTime(2012, 10, 2),
+            new DateTime(2012,10,30),
+            new DateTime(2012, 9, 2),
+            new DateTime(2010, 10, 2),
+            new DateTime(2010, 10, 2),
+            new DateTime(2012, 10, 2),
+            new DateTime(2010, 10, 2),
+            new DateTime(2012, 10, 2),
+        }},
+    };
+    
+    [Theory, MemberData(nameof(BeReviewsWithOnlyOneMovie))]
+    public void GetTopMoviesByReviewer(int[] reviewerId, int[] movie, int[]expected, DateTime[] date)
+    {
+        var theChoosenOne = 1; //
+        //Initializes de repository
+        var fakeRepo = new BEReview[]
+        {
+            new BEReview(reviewerId[0],movie[0],3,date[0]),
+            new BEReview(reviewerId[1],movie[1],2,date[1]),
+            new BEReview(reviewerId[2],movie[2],1,date[2]),
+            new BEReview(reviewerId[3],movie[3],0,date[3]),
+            new BEReview(reviewerId[4],movie[4],0,date[4]),
+            new BEReview(reviewerId[5],movie[5],2,date[5]),
+            new BEReview(reviewerId[6],movie[6],1,date[6]),
+            new BEReview(reviewerId[7],movie[7],0,date[7]),
+            new BEReview(reviewerId[8],movie[8],0,date[8])
+        };
+
+        //Creates a mockRepository and setting it up
+        Mock<IReviewRepository> mockRepository = new Mock<IReviewRepository>();
+        mockRepository.Setup(r => r.GetAll()).Returns(fakeRepo);
+        
+        //Initializes the service with the given mockRepository
+        IReviewService service = new ReviewService(mockRepository.Object);
+
+        //Act
+        var topMovies = service.GetTopMoviesByReviewer(theChoosenOne);
+        
+        //Assert
+        
+        Assert.Equal(expected,topMovies);
+        mockRepository.Verify(r => r.GetAll(), Times.Once);
+    }
 
     
     //11
