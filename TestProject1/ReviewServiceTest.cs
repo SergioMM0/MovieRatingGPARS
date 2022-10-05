@@ -450,7 +450,7 @@ public class UnitTest1
         
         //Assert
         
-        Assert.Equal(expected,topMovies);
+        Assert.Equal(expected.ToList(),topMovies);
         mockRepository.Verify(r => r.GetAll(), Times.Once);
     }
 
