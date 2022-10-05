@@ -147,6 +147,35 @@ public class UnitTest1
     //4th method
     // to be implemented by daniel
     
+    [Theory]
+    [InlineData(1,3)]
+    [InlineData(2,4)]
+    [InlineData(3,0)]
+    public void GetNumberOfReviewsTest(int movie, int expected)
+    { 
+        //Arrange
+        var fakeRepo = new []
+        {
+            new BEReview(1,  1,  1, new DateTime()),
+            new BEReview(2,  1,  2, new DateTime()),
+            new BEReview(5,  1,  3, new DateTime()),
+            new BEReview(1,  2,  4, new DateTime()),
+            new BEReview(7,  2,  5, new DateTime()),
+            new BEReview(1,  2,  6, new DateTime()),
+            new BEReview(9,  2,  7, new DateTime()),
+        };
+        Mock<IReviewRepository> mockRepository = new Mock<IReviewRepository>();
+        mockRepository.Setup(r => r.GetAll()).Returns(fakeRepo);
+        IReviewService service = new ReviewService(mockRepository.Object);
+        
+        //Act
+        int result = service.GetNumberOfReviews(movie);
+        
+        //Assert
+        Assert.Equal(expected, result);
+        mockRepository.Verify(r => r.GetAll(), Times.Once);
+    }
+    
 
     //5th method
     [Theory]
