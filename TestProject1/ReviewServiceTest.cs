@@ -37,7 +37,7 @@ public class UnitTest1
     }
 
     
-    //1
+    //1st method
     [Theory]
     [InlineData(1,2)]
     [InlineData(2,1)]
@@ -113,7 +113,7 @@ public class UnitTest1
         Assert.Throws<DivideByZeroException>(() => service.GetAverageRateFromReviewer(3));
     }
 
-    //3
+    //3rd method
     [Theory]
     [InlineData(1,1,1)]
     [InlineData(1,3,3)]
@@ -143,6 +143,10 @@ public class UnitTest1
         Assert.Equal(expectedCount,actualCount);
         
     }
+    
+    //4th method
+    // to be implemented by daniel
+    
 
     //5th method
     [Theory]
