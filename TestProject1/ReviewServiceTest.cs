@@ -99,7 +99,7 @@ public class UnitTest1
     }
     
     [Fact]
-    public void GetAverageRateFromReviewer_TestException()
+    public void GetAverageRateFromReviewer_ExceptionTest()
     {
         //Arrange
         var fakeRepo = new BEReview[]{};
@@ -235,24 +235,9 @@ public class UnitTest1
         Assert.Equal(expectedOccurrenceCount,actualOccurrenceCount);
     }
     
-    //7
-    [Fact]
-    public void GetMoviesWithHighestNumberOfTopRatesThrowsInvalidOperationExWhenRepoIsEmpty()
-    {
-        //Arrange
-        var fakeRepo = new BEReview[]{};
-
-        Mock<IReviewRepository> mockRepository = new Mock<IReviewRepository>();
-        mockRepository.Setup(r => r.GetAll()).Returns(fakeRepo);
-        
-        IReviewService service = new ReviewService(mockRepository.Object);
-
-        //Act & Assert
-        
-        Assert.Throws<InvalidOperationException>(() => service.GetMoviesWithHighestNumberOfTopRates());
-    }
     
-    //7
+    
+    //7th method
     [Theory]
     [InlineData(new int[]{1,2,3,4,5,6}, new int[]{2,5,5,4,0,5}, new int[]{2,3,6})]
     [InlineData(new int[]{1,2,3,4,5,6}, new int[]{2,3,4,5,0,1}, new int[]{4})]
@@ -282,6 +267,21 @@ public class UnitTest1
         
         Assert.Equal(expected,actual);
         mockRepository.Verify(r => r.GetAll(), Times.Once);
+    }
+    [Fact]
+    public void GetMoviesWithHighestNumberOfTopRatesThrowsInvalidOperationExWhenRepoIsEmpty()
+    {
+        //Arrange
+        var fakeRepo = new BEReview[]{};
+
+        Mock<IReviewRepository> mockRepository = new Mock<IReviewRepository>();
+        mockRepository.Setup(r => r.GetAll()).Returns(fakeRepo);
+        
+        IReviewService service = new ReviewService(mockRepository.Object);
+
+        //Act & Assert
+        
+        Assert.Throws<InvalidOperationException>(() => service.GetMoviesWithHighestNumberOfTopRates());
     }
     
     //8
