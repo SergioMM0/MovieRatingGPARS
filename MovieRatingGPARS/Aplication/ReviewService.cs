@@ -180,7 +180,7 @@ public class ReviewService : IReviewService
             throw new InvalidOperationException("This reviewer has no reviews yet");
 
 
-        var orderedEnumerable = reviews.OrderBy(review => review.Grade).ThenBy(review => review.ReviewDate);
+        var orderedEnumerable = reviews.OrderByDescending(review => review.Grade).ThenByDescending(review => review.ReviewDate);
         return orderedEnumerable.Select(review => review.Movie).ToList();
     }
 
