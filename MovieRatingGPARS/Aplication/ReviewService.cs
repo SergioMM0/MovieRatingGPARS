@@ -20,20 +20,21 @@ public class ReviewService : IReviewService
     {
         return _repository.GetAll().Count(review => review.Reviewer == reviewer);
     }
+    
+    public  double GetAverageRateFromReviewer(int reviewer)
+    {
+        var reviews = _repository.GetAll().Where(review => review.Reviewer == reviewer).ToList();
+        double counter = reviews.Count;
+        if (counter==0)
+            throw new DivideByZeroException("Error: Reviewer not found.");
+        return reviews.Sum(review => review.Grade) /counter ;
+    }
 
     public int GetNumberOfRatesByReviewer(int reviewer, int rate)
     {
         return _repository.GetAll().Count(review => reviewer == review.Reviewer && rate == review.Grade);
     }
-    public  double GetAverageRateFromReviewer(int reviewer)
-    {
-        var reviews = _repository.GetAll().Where(review => review.Reviewer == reviewer).ToList();
-        double counter = reviews.Count;
-        Debug.Assert(counter!=0);
-        return reviews.Sum(review => review.Grade) /counter ;
-    }
     
-
     public int GetNumberOfReviews(int movie)
     {
         return _repository.GetAll().Count(review => review.Movie==movie);
@@ -42,8 +43,11 @@ public class ReviewService : IReviewService
     public double GetAverageRateOfMovie(int movie)
     {
         var reviews = _repository.GetAll().Where(review => review.Movie==movie).ToList();
-        Debug.Assert(reviews != null);
         double counter = reviews.Count;
+        if (counter==0)
+        {
+            throw new DivideByZeroException("Error: Movie not found");
+        }
         return reviews.Sum(review => review.Grade) / counter;
 
     }
