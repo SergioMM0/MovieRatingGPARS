@@ -54,7 +54,7 @@ public class ReviewService : IReviewService
 
     public int GetNumberOfRates(int movie, int rate)
     {
-        IEnumerable<BEReview> reviews = _repository.GetAll()
+        var reviews = _repository.GetAll()
             .Where(r=>r.Movie==movie)
             .Where(r=>r.Grade==rate);
         return reviews.Count();
