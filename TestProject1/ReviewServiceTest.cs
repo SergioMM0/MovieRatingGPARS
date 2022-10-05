@@ -143,10 +143,51 @@ public class UnitTest1
         Assert.Equal(expectedCount,actualCount);
         
     }
-    
-    
 
+    //5th method
+    [Theory]
+    [InlineData(1,3)]
+    [InlineData(2,6)]
+
+    public void GetAverageRateOfMovieTest(int movie ,double expectedRate)
+    {
+        var fakeRepo = new []
+        {
+            new BEReview(1,  1,  2, new DateTime()),
+            new BEReview(2,  2,  6, new DateTime()),
+            new BEReview(2,  1,  4, new DateTime()),
+            new BEReview(1,  2,  6,  new DateTime())
+        };
+
+        Mock<IReviewRepository> mockRepository = new Mock<IReviewRepository>();
+        mockRepository.Setup(r => r.GetAll()).Returns(fakeRepo);
+
+        IReviewService service = new ReviewService(mockRepository.Object);
+        
+        //Act
+        double result = service.GetAverageRateOfMovie(movie);
+        
+        //Assert
+        Assert.Equal(expectedRate, result);
+        mockRepository.Verify(r => r.GetAll(), Times.Once);
+    }
     
+    [Fact]
+    public void GetAverageRateOfMovie_ExceptionTest()
+    {
+        var fakeRepo = new BEReview[] { };
+
+        Mock<IReviewRepository> mockRepository = new Mock<IReviewRepository>();
+        mockRepository.Setup(r => r.GetAll()).Returns(fakeRepo);
+
+        IReviewService service = new ReviewService(mockRepository.Object);
+        
+        //Act
+        // +
+        //Assert
+        Assert.Throws<DivideByZeroException>(() => service.GetAverageRateOfMovie(5));
+    }
+
     //6
     [Theory]
     [InlineData(1,3,2)]
