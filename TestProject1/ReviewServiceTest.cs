@@ -42,13 +42,13 @@ public class UnitTest1
     [InlineData(1,2)]
     [InlineData(2,1)]
     [InlineData(3,0)]
-    public void GetNumberOfReviewsFromReviewer(int reviewer, int expected)
+    public void GetNumberOfReviewsFromReviewerTest(int reviewer, int expected)
     {
-        BEReview[] fakeRepo = new BEReview[]
+        var fakeRepo = new []
         {
-            new BEReview() { Reviewer = 1, Movie = 1, Grade = 3, ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 2, Movie = 1, Grade = 3, ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 1, Movie = 2, Grade = 3, ReviewDate = new DateTime() }
+            new BEReview(1,  1,  3, new DateTime()),
+            new BEReview(2,  1,  3, new DateTime()),
+            new BEReview(1,  2,  3,  new DateTime())
         };
 
         Mock<IReviewRepository> mockRepository = new Mock<IReviewRepository>();
@@ -68,22 +68,20 @@ public class UnitTest1
     [Theory]
     [InlineData(1,5)]
     [InlineData(2,3)]
-    [InlineData(3,0)]
-    
-    public void GetAverageRateFromReviewer(int reviewer, double expected)
+    public void GetAverageRateFromReviewerTest(int reviewer, double expected)
     {
         //Arrange
-        BEReview[] fakeRepo = new BEReview[]
+        var fakeRepo = new []
         {
             //Reviewer 1 has an average of 5
             //Reviewer 2 has an average of 3
-            new BEReview() { Reviewer = 1, Movie = 1, Grade = 10, ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 1, Movie = 2, Grade = 0, ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 2, Movie = 1, Grade = 4, ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 2, Movie = 2, Grade = 2, ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 1, Movie = 3, Grade = 10, ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 2, Movie = 3, Grade = 3, ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 1, Movie = 4, Grade = 0, ReviewDate = new DateTime() }
+            new BEReview(1,  1,  10, new DateTime()),
+            new BEReview(1,  2,  0,  new DateTime()),
+            new BEReview(2,  1,  4,  new DateTime()),
+            new BEReview(2,  2,  2,  new DateTime()),
+            new BEReview(1,  3,  10, new DateTime()),
+            new BEReview(2,  3,  3,  new DateTime()),
+            new BEReview(1,  4,  0,  new DateTime())
         };
         Mock<IReviewRepository> mockRepository = new Mock<IReviewRepository>();
         mockRepository.Setup(r => r.GetAll()).Returns(fakeRepo);
@@ -100,23 +98,39 @@ public class UnitTest1
         mockRepository.Verify(r => r.GetAll(), Times.Once);
     }
     
+    [Fact]
+    public void GetAverageRateFromReviewer_TestException()
+    {
+        //Arrange
+        var fakeRepo = new BEReview[]{};
+        Mock<IReviewRepository> mockRepository = new Mock<IReviewRepository>();
+        mockRepository.Setup(r => r.GetAll()).Returns(fakeRepo);
+        
+        IReviewService service = new ReviewService(mockRepository.Object);
+
+        //Act + Assert
+        
+        Assert.Throws<DivideByZeroException>(() => service.GetAverageRateFromReviewer(3));
+    }
+
     //3
     [Theory]
     [InlineData(1,1,1)]
     [InlineData(1,3,3)]
     [InlineData(1,4,2)]
     [InlineData(1,5,0)]
+    [InlineData(2,3,0)]
     public void GetNumberOfRatesByReviewer(int reviewer,int rating,int expectedCount)
     {
         //Arrange
-        BEReview[] fakeRepo = new BEReview[]
+        var fakeRepo = new []
         {
-            new BEReview() { Reviewer = 1, Movie = 1, Grade = 1, ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 1, Movie = 1, Grade = 3, ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 1, Movie = 2, Grade = 3, ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 1, Movie = 1, Grade = 3, ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 1, Movie = 1, Grade = 4, ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 1, Movie = 2, Grade = 4, ReviewDate = new DateTime() }
+            new BEReview(1,  1,  1,  new DateTime()),
+            new BEReview(1,  1,  3,  new DateTime()),
+            new BEReview(1,  2,  3,  new DateTime()),
+            new BEReview(1,  1,  3,  new DateTime()),
+            new BEReview(1,  1,  4,  new DateTime()),
+            new BEReview(1,  2,  4,  new DateTime()) 
         };
         
         Mock<IReviewRepository> mockRepository = new Mock<IReviewRepository>();
