@@ -184,6 +184,7 @@ public class ReviewService : IReviewService
         return orderedEnumerable.Select(review => review.Movie).ToList();
     }
 
+    //11
     public List<int> GetReviewersByMovie(int movie)
     {
         return _repository.GetAll().Where(r => r.Movie == movie).Select(r => r.Reviewer).ToList();
