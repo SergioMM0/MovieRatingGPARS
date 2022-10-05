@@ -175,20 +175,13 @@ public class ReviewService : IReviewService
     //10 
     public List<int> GetTopMoviesByReviewer(int reviewer)
     {
-        IEnumerable<BEReview> reviews = _repository.GetAll().Where(review => review.Reviewer == reviewer);
+        IEnumerable<BEReview> reviews = _repository.GetAll().Where(review => review.Reviewer == reviewer).ToList();
         if (reviews.ToList().Count == 0)
-        {
             throw new InvalidOperationException("This reviewer has no reviews yet");
-        }
 
-        reviews.ToList().OrderByDescending(review => review.Grade).ThenByDescending(review => review.ReviewDate);
-        return reviews.Select(review => review.Movie).ToList();
-        
-        
-        /*
-        IEnumerable reviews = _repository.GetAll().Where(review => review.Reviewer == reviewer);
-        return reviews.Cast<BEReview>().ToList().OrderBy(review => review.Grade).ThenBy(review =>review.ReviewDate).Select(review => review.Movie).ToList();
-         */
+
+        var orderedEnumerable = reviews.OrderBy(review => review.Grade).ThenBy(review => review.ReviewDate);
+        return orderedEnumerable.Select(review => review.Movie).ToList();
     }
 
     public List<int> GetReviewersByMovie(int movie)

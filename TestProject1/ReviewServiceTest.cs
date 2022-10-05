@@ -423,7 +423,7 @@ public class UnitTest1
     [Theory, MemberData(nameof(BeReviewsWithOnlyOneMovie))]
     public void GetTopMoviesByReviewer(int[] reviewerId, int[] movie, int[]expected, DateTime[] date)
     {
-        var theChoosenOne = 1; //
+        var theChosenOne = 1; //
         //Initializes de repository
         var fakeRepo = new BEReview[]
         {
@@ -446,7 +446,7 @@ public class UnitTest1
         IReviewService service = new ReviewService(mockRepository.Object);
 
         //Act
-        var topMovies = service.GetTopMoviesByReviewer(theChoosenOne);
+        var topMovies = service.GetTopMoviesByReviewer(theChosenOne);
         
         //Assert
         
