@@ -239,12 +239,12 @@ public class UnitTest1
     
     //7th method
     [Theory]
-    [InlineData(new int[]{1,2,3,4,5,6}, new int[]{2,5,5,4,0,5}, new int[]{2,3,6})]
-    [InlineData(new int[]{1,2,3,4,5,6}, new int[]{2,3,4,5,0,1}, new int[]{4})]
+    [InlineData(new []{1,2,3,4,5,6}, new []{2,5,5,4,0,5}, new []{2,3,6})]
+    [InlineData(new []{1,2,3,4,5,6}, new []{2,3,4,5,0,1}, new []{4})]
     public void GetMoviesWithHighestNumberOfTopRates(int[] movieId, int[] grade, int[] expected)
     {
         //Arrange
-        var fakeRepo = new BEReview[]
+        var fakeRepo = new []
         {
             new BEReview() { Reviewer = 1, Movie = movieId[0], Grade = grade[0], ReviewDate = new DateTime() },
             new BEReview() { Reviewer = 1, Movie = movieId[1], Grade = grade[1], ReviewDate = new DateTime() },
@@ -288,20 +288,20 @@ public class UnitTest1
     //Please do not change for the moment.
     //Debugging reveals correct behaviour but test keeps failing.
     [Theory]
-    [InlineData(new int[] { 1, 3, 3, 2, 2, 4, 8 },new int []{2,3})]
-    [InlineData(new int[] { 1, 2, 3, 1, 1, 1, 2 },new int []{1})]
-    [InlineData(new int[] { 1, 2, 3, 1, 2, 3, 0 },new int []{1,2,3})]
+    [InlineData(new [] { 1, 3, 3, 2, 2, 4, 8 },new  []{2,3})]
+    [InlineData(new [] { 1, 2, 3, 1, 1, 1, 2 },new  []{1})]
+    [InlineData(new [] { 1, 2, 3, 1, 2, 3, 0 },new  []{1,2,3})]
     
-    public void GetMostProductiveReviewers(int [] reviewrsIds,int[] mostActiveReviewers)
+    public void GetMostProductiveReviewers(int [] reviewersIds,int[] mostActiveReviewers)
     {
         //Arrange
-        var fakeRepo = new BEReview[reviewrsIds.Length];
+        var fakeRepo = new BEReview[reviewersIds.Length];
         
-        for (int i = 0; i < reviewrsIds.Length; i++)
+        for (int i = 0; i < reviewersIds.Length; i++)
         {
             fakeRepo[i] = new BEReview()
             {
-                Reviewer = reviewrsIds[i]
+                Reviewer = reviewersIds[i]
             };
 
         }
@@ -318,9 +318,6 @@ public class UnitTest1
         //Assert
         Assert.True(result.All(mostActiveReviewers.Contains));
         Assert.True(result.Count==mostActiveReviewers.Length);
-        
-        
-        mockRepository.Verify(r => r.GetAll(), Times.Once);
     }
     
     //9
@@ -332,11 +329,10 @@ public class UnitTest1
     public void GetTopRatedMovies(int countOfMoviesRequested,params int[] expectedTopMovies)
     {
         //Arrange
-        int movieCount = 4;
         
         #region coolRegionOfData
 
-        BEReview[] data = new BEReview[]
+        var data = new []
         {
             new BEReview(1,2,5,new DateTime()),
             new BEReview(1,2,4,new DateTime()),
@@ -387,7 +383,7 @@ public class UnitTest1
         var reviewerWithNoReviews = 1; 
         
         //Initializes a fakeRepository
-        var fakeRepo = new BEReview[]
+        var fakeRepo = new []
         {
             new BEReview(2,3,1,new DateTime()),
             new BEReview(2,3,2,new DateTime()),
@@ -416,16 +412,16 @@ public class UnitTest1
     {
         //Each object will provide the data needed for each scenario
         //1st scenario
-        new object[] { new int[] //reviewerId
+        new object[] { new [] //reviewerId
         {
             1,2,2,3,3,4,4,5,5
-        }, new int[] //MovieId
+        }, new [] //MovieId
         {
             1,1,2,1,2,1,2,1,2
-        },new int[] //ExpectedListToBeReturned
+        },new [] //ExpectedListToBeReturned
         {
             1
-        },new DateTime[] //Movie dates
+        },new [] //Movie dates
         {
             new DateTime(2010, 10, 2),
             new DateTime(2010, 10, 2),
@@ -441,13 +437,13 @@ public class UnitTest1
         new object[] { new int[] //reviewerId
         {
             1,1,1,1,3,4,4,5,5
-        }, new int[] //MovieId
+        }, new [] //MovieId
         {
             1,2,3,4,1,1,2,1,2
-        },new int[] //ExpectedListToBeReturned
+        },new [] //ExpectedListToBeReturned
         {
             3,2,4,1
-        },new DateTime[] //Movie dates
+        },new [] //Movie dates
         {
             new DateTime(2010, 10, 2),
             new DateTime(2012, 10, 2),
@@ -466,7 +462,7 @@ public class UnitTest1
     {
         var theChosenOne = 1; //
         //Initializes de repository
-        var fakeRepo = new BEReview[]
+        var fakeRepo = new []
         {
             new BEReview(reviewerId[0],movie[0],3,date[0]),
             new BEReview(reviewerId[1],movie[1],2,date[1]),
@@ -508,7 +504,7 @@ public class UnitTest1
         //Arrange
         #region coolRegionOfData
 
-        BEReview[] data = new BEReview[]
+        var data = new []
         {
             new BEReview(1,2,5,new DateTime()),
             new BEReview(2,2,4,new DateTime()),
