@@ -57,12 +57,28 @@ public class ReviewService : IReviewService
     }
 
     //method implemented but still needs to be tested.
+    //7
     public List<int> GetMoviesWithHighestNumberOfTopRates()
     {
-        return _repository.GetAll()
-            .Where(review => review.Grade == 5)
-            .Select(review => review.Movie)
-            .ToList();
+        var topRatedMovies = new List<int>();
+        var highest = int.MinValue;
+        
+        //if the repository is empty, throws an InvalidOperationException
+        if (_repository.GetAll().Length == 0)
+        {
+            throw new InvalidOperationException("Movies not found");
+        }
+        
+        //Sorts the movies descending based on the rating, so the highest should come first
+        foreach (var review in _repository.GetAll().OrderByDescending(r => r.Grade))
+        {
+            if (review.Grade >= highest)
+            {
+                topRatedMovies.Add(review.Movie);
+            }
+        }
+
+        return topRatedMovies;
     }
 
     public List<int> GetMostProductiveReviewers()

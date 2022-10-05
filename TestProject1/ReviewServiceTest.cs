@@ -180,6 +180,43 @@ public class UnitTest1
         Assert.Equal(expectedOccurrenceCount,actualOccurrenceCount);
     }
     
+    //7
+    [Fact]
+    public void GetMoviesWithHighestNumberOfTopRatesThrowsInvalidOperationExWhenRepoIsEmpty()
+    {
+        //Arrange
+        var fakeRepo = new BEReview[]{};
+
+        Mock<IReviewRepository> mockRepository = new Mock<IReviewRepository>();
+        mockRepository.Setup(r => r.GetAll()).Returns(fakeRepo);
+        
+        IReviewService service = new ReviewService(mockRepository.Object);
+
+        //Act & Assert
+        
+        Assert.Throws<InvalidOperationException>(() => service.GetMoviesWithHighestNumberOfTopRates());
+    }
+
+    [Theory]
+    [InlineData(1,3,2)]
+    [InlineData(2,0,0)]
+    [InlineData(3,2,1)]
+    [InlineData(4,5,4)]
+    [InlineData(5,0,0)]
+    
+    public void GetMoviesWithHighestNumberOfTopRates()
+    {
+        //Arrange
+        var fakeRepo = new BEReview[]
+        {
+            new BEReview() { Reviewer = 1, Movie = 1, Grade = 1, ReviewDate = new DateTime() },
+            new BEReview() { Reviewer = 1, Movie = 1, Grade = 3, ReviewDate = new DateTime() },
+            new BEReview() { Reviewer = 1, Movie = 2, Grade = 3, ReviewDate = new DateTime() },
+            new BEReview() { Reviewer = 1, Movie = 1, Grade = 3, ReviewDate = new DateTime() },
+            new BEReview() { Reviewer = 1, Movie = 1, Grade = 4, ReviewDate = new DateTime() },
+            new BEReview() { Reviewer = 1, Movie = 2, Grade = 4, ReviewDate = new DateTime() }
+        };
+    }
     
     //8
     //Please do not change for the moment.
@@ -275,6 +312,9 @@ public class UnitTest1
         //Assert
         Assert.Equal(expectedTopMovies,coolData);
     }
+    
+    //10
+    
 
     
     //11
