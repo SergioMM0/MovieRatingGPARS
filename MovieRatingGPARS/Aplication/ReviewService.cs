@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Diagnostics;
 using MovieRatingGPARS.Core.Model;
 using MovieRatingGPARS.Core.Repository;
 using MovieRatingGPARS.Core.Service;
@@ -26,19 +27,25 @@ public class ReviewService : IReviewService
     }
     public  double GetAverageRateFromReviewer(int reviewer)
     {
-        IEnumerable<BEReview> reviews = _repository.GetAll().Where(review => review.Reviewer == reviewer);
-        return reviews.Sum(review => review.Grade) / reviews.Count();
+        var reviews = _repository.GetAll().Where(review => review.Reviewer == reviewer).ToList();
+        double counter = reviews.Count;
+        Debug.Assert(counter!=0);
+        return reviews.Sum(review => review.Grade) /counter ;
     }
     
 
     public int GetNumberOfReviews(int movie)
     {
-        throw new NotImplementedException();
+        return _repository.GetAll().Count(review => review.Movie==movie);
     }
 
     public double GetAverageRateOfMovie(int movie)
     {
-        throw new NotImplementedException();
+        var reviews = _repository.GetAll().Where(review => review.Movie==movie).ToList();
+        Debug.Assert(reviews != null);
+        double counter = reviews.Count;
+        return reviews.Sum(review => review.Grade) / counter;
+
     }
 
     public int GetNumberOfRates(int movie, int rate)
@@ -129,7 +136,7 @@ public class ReviewService : IReviewService
         return moviesInOrder.Take(amount).ToList();
     }
     
-    private List<int> retrieveValuesByKeys(List<double> keysInOrder, SortedList<double, int> source)
+    /*private List<int> retrieveValuesByKeys(List<double> keysInOrder, SortedList<double, int> source)
     {
         List<int> valuesInOrder = new List<int>();
         foreach (double currentKey in keysInOrder)
@@ -141,7 +148,7 @@ public class ReviewService : IReviewService
 
         return valuesInOrder;
 
-    }
+    }*/
     //method implemented but still needs to be tested.
     public List<int> GetTopMoviesByReviewer(int reviewer)
     {
