@@ -46,7 +46,13 @@ public class ReviewService : IReviewService
     
     public int GetNumberOfReviews(int movie)
     {
-        return _repository.GetAll().Count(review => review.Movie==movie);
+        var repo = _repository.GetAll().Count(review => review.Movie==movie);
+        if (repo == 0)
+        {
+            throw new InvalidOperationException("This movie has no reviews yet");
+        }
+
+        return repo;
     }
 
     public double GetAverageRateOfMovie(int movie)
