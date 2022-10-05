@@ -115,7 +115,7 @@ public class UnitTest1
     }
     
     [Fact]
-    public void GetAverageRateFromReviewer_ExceptionTest()
+    public void GetAverageRateFromReviewer_TestDivideByZeroException()
     {
         //Arrange
         var fakeRepo = new BEReview[]{};
