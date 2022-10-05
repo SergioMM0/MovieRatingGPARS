@@ -67,17 +67,17 @@
     &lt;TestId&gt;xUnit::C52CC075-A006-49CC-8068-D519E6F0F534::net6.0::TestProject1.UnitTest1.GetMostProductiveReviewers&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d82ce445_002D85f3_002D45df_002D9810_002D2c2db01ab416/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ReviewServiceTemp #5" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::C52CC075-A006-49CC-8068-D519E6F0F534::net6.0::TestProject1.ReviewServiceTemp&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::C52CC075-A006-49CC-8068-D519E6F0F534::net6.0::TestProject1.UnitTest1&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d82ce445_002D85f3_002D45df_002D9810_002D2c2db01ab416/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ReviewServiceTemp #5" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::C52CC075-A006-49CC-8068-D519E6F0F534::net6.0::TestProject1.ReviewServiceTemp&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::C52CC075-A006-49CC-8068-D519E6F0F534::net6.0::TestProject1.UnitTest1&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=dc1c9c78_002D2ebd_002D4d38_002D9634_002D554286304d52/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ReviewServiceTemp #4" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::C52CC075-A006-49CC-8068-D519E6F0F534::net6.0::TestProject1.ReviewServiceTemp&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::C52CC075-A006-49CC-8068-D519E6F0F534::net6.0::TestProject1.UnitTest1&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=dc1c9c78_002D2ebd_002D4d38_002D9634_002D554286304d52/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ReviewServiceTemp #4" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::C52CC075-A006-49CC-8068-D519E6F0F534::net6.0::TestProject1.ReviewServiceTemp&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::C52CC075-A006-49CC-8068-D519E6F0F534::net6.0::TestProject1.UnitTest1&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f0504458_002D09cb_002D4725_002D9cae_002D51f0e83e2a8a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="CreateReviewServiceWithNullRepositoryExceptArgumentException" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
