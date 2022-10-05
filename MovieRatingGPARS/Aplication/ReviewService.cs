@@ -18,7 +18,11 @@ public class ReviewService : IReviewService
 
     public int GetNumberOfReviewsFromReviewer(int reviewer)
     {
-        return _repository.GetAll().Count(review => review.Reviewer == reviewer);
+        var n = _repository.GetAll().Count(review => review.Reviewer == reviewer);
+        if (n==0)
+            throw new ArgumentOutOfRangeException(nameof(ArgumentException),"Error: reviewer not found.");
+        return n;
+
     }
     
     public  double GetAverageRateFromReviewer(int reviewer)

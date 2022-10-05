@@ -41,7 +41,6 @@ public class UnitTest1
     [Theory]
     [InlineData(1,2)]
     [InlineData(2,1)]
-    [InlineData(3,0)]
     public void GetNumberOfReviewsFromReviewerTest(int reviewer, int expected)
     {
         var fakeRepo = new []
@@ -63,6 +62,23 @@ public class UnitTest1
         Assert.Equal(expected, result);
         mockRepository.Verify(r => r.GetAll(), Times.Once);
     }
+    
+    [Fact]
+    public void GetNumberOfReviewsFromReviewerTest_TestOutOfRangeIdException()
+    {
+        //Arrange
+        var fakeRepo = new BEReview[]{};
+        Mock<IReviewRepository> mockRepository = new Mock<IReviewRepository>();
+        mockRepository.Setup(r => r.GetAll()).Returns(fakeRepo);
+        
+        IReviewService service = new ReviewService(mockRepository.Object);
+
+        //Act + Assert
+        
+        Assert.Throws<ArgumentOutOfRangeException>(() => service.GetNumberOfReviewsFromReviewer(3));
+    }
+    
+    
     
     //2nd method
     [Theory]
