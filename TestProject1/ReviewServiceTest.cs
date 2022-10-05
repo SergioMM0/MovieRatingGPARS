@@ -502,12 +502,12 @@ public class UnitTest1
     
     //11
     [Theory]
-    [InlineData(2,1,2,3,4)]
-    [InlineData(3,1)]
-    [InlineData(1,1,3,4)]
-    [InlineData(4,1,2)]
-    [InlineData(5)]
-    public void GetReviewersByMovieTest(int movie,params int[] expectedUsers)
+    [InlineData(2,new []{1,2,3,4})]
+    [InlineData(3,new []{1})]
+    [InlineData(1,new []{1,3,4})]
+    [InlineData(4,new []{1,2})]
+    [InlineData(5,new int[]{})]
+    public void GetReviewersByMovieTest(int movie, int[] expectedUsers)
     {
         //Arrange
         #region coolRegionOfData
@@ -535,10 +535,21 @@ public class UnitTest1
 
         ReviewService service = new ReviewService(mockRepo.Object);
         
-        //Act
-        var actualUsers = service.GetReviewersByMovie(movie).ToArray();
-        //Assert
-        Assert.Equal(expectedUsers,actualUsers);
+        //Act+Act
+        var actualUsers= Array.Empty<int>();
+        var exception = false;
+        try
+        {
+            actualUsers = service.GetReviewersByMovie(movie).ToArray();
+        }
+        catch (ArgumentOutOfRangeException e)
+        {
+            exception = true;
+            Assert.Throws<ArgumentOutOfRangeException>(() => service.GetReviewersByMovie(movie));
+        }
+
+        if (!exception)
+            Assert.Equal(expectedUsers,actualUsers);
     }
 
 }

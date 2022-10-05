@@ -196,6 +196,10 @@ public class ReviewService : IReviewService
     //11
     public List<int> GetReviewersByMovie(int movie)
     {
+        if (_repository.GetAll().Any(review => review.Movie==movie))
+        {
+            throw new ArgumentOutOfRangeException(nameof(ArgumentException), "Error: movie not found");
+        }
         return _repository.GetAll().Where(r => r.Movie == movie).Select(r => r.Reviewer).ToList();
     }
 }
