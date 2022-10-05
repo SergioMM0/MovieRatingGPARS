@@ -196,26 +196,38 @@ public class UnitTest1
         
         Assert.Throws<InvalidOperationException>(() => service.GetMoviesWithHighestNumberOfTopRates());
     }
-
-    [Theory]
-    [InlineData(1,3,2)]
-    [InlineData(2,0,0)]
-    [InlineData(3,2,1)]
-    [InlineData(4,5,4)]
-    [InlineData(5,0,0)]
     
-    public void GetMoviesWithHighestNumberOfTopRates()
+    //7
+    [Theory]
+    [InlineData(new int[]{1,2,3,4,5,6}, new int[]{2,5,5,4,0,5}, new int[]{2,3,6})]
+    [InlineData(new int[]{1,2,3,4,5,6}, new int[]{2,3,4,5,0,1}, new int[]{4})]
+
+    public void GetMoviesWithHighestNumberOfTopRates(int[] movieId, int[] grade, int[] expected)
     {
         //Arrange
         var fakeRepo = new BEReview[]
         {
-            new BEReview() { Reviewer = 1, Movie = 1, Grade = 1, ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 1, Movie = 1, Grade = 3, ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 1, Movie = 2, Grade = 3, ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 1, Movie = 1, Grade = 3, ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 1, Movie = 1, Grade = 4, ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 1, Movie = 2, Grade = 4, ReviewDate = new DateTime() }
+            new BEReview() { Reviewer = 1, Movie = movieId[0], Grade = grade[0], ReviewDate = new DateTime() },
+            new BEReview() { Reviewer = 1, Movie = movieId[1], Grade = grade[1], ReviewDate = new DateTime() },
+            new BEReview() { Reviewer = 1, Movie = movieId[2], Grade = grade[2], ReviewDate = new DateTime() },
+            new BEReview() { Reviewer = 1, Movie = movieId[3], Grade = grade[3], ReviewDate = new DateTime() },
+            new BEReview() { Reviewer = 1, Movie = movieId[4], Grade = grade[4], ReviewDate = new DateTime() },
+            new BEReview() { Reviewer = 1, Movie = movieId[5], Grade = grade[5], ReviewDate = new DateTime() }
         };
+        
+        Mock<IReviewRepository> mockRepository = new Mock<IReviewRepository>();
+        mockRepository.Setup(r => r.GetAll()).Returns(fakeRepo);
+        
+        IReviewService service = new ReviewService(mockRepository.Object);
+        
+        //Act
+
+        var actual = service.GetMoviesWithHighestNumberOfTopRates();
+
+        //Assert
+        
+        Assert.Equal(expected,actual);
+        mockRepository.Verify(r => r.GetAll(), Times.Once);
     }
     
     //8

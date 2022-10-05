@@ -62,18 +62,20 @@ public class ReviewService : IReviewService
     {
         var topRatedMovies = new List<int>();
         var highest = int.MinValue;
+        var allMovies = _repository.GetAll();
         
         //if the repository is empty, throws an InvalidOperationException
-        if (_repository.GetAll().Length == 0)
+        if (allMovies.Length == 0)
         {
             throw new InvalidOperationException("Movies not found");
         }
         
         //Sorts the movies descending based on the rating, so the highest should come first
-        foreach (var review in _repository.GetAll().OrderByDescending(r => r.Grade))
+        foreach (var review in allMovies.OrderByDescending(r => r.Grade))
         {
             if (review.Grade >= highest)
             {
+                highest = review.Grade;
                 topRatedMovies.Add(review.Movie);
             }
         }
