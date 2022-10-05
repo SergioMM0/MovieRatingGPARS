@@ -36,7 +36,7 @@ public class ReviewService : IReviewService
 
     public int GetNumberOfRatesByReviewer(int reviewer, int rate)
     {
-        if (!_repository.GetAll().Select(review => review.Reviewer == reviewer).Any())
+        if (_repository.GetAll().Select(review => review.Reviewer == reviewer).Any())
             throw new ArgumentOutOfRangeException(nameof(ArgumentException), "Error: reviewer not found");
         if (!Enumerable.Range(1,5).Contains(rate))
             throw new ArgumentOutOfRangeException(nameof(ArgumentException), "Error: Invalid rate out of range[1..5]");

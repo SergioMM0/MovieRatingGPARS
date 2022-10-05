@@ -131,35 +131,47 @@ public class UnitTest1
 
     //3rd method
     [Theory]
-    [InlineData(1,1,1)]
-    [InlineData(1,3,3)]
-    [InlineData(1,4,2)]
-    [InlineData(1,5,0)]
-    [InlineData(2,3,0)]
-    public void GetNumberOfRatesByReviewer(int reviewer,int rating,int expectedCount)
+    [InlineData(1, 1, 1)]
+    [InlineData(1, 3, 3)]
+    [InlineData(1, 4, 2)]
+    [InlineData(1, 7, null)]
+    [InlineData(5, 3, null)]
+    public void GetNumberOfRatesByReviewer(int reviewer, int rating, int? expectedCount)
     {
         //Arrange
-        var fakeRepo = new []
+        var fakeRepo = new[]
         {
-            new BEReview(1,  1,  1,  new DateTime()),
-            new BEReview(1,  1,  3,  new DateTime()),
-            new BEReview(1,  2,  3,  new DateTime()),
-            new BEReview(1,  1,  3,  new DateTime()),
-            new BEReview(1,  1,  4,  new DateTime()),
-            new BEReview(1,  2,  4,  new DateTime()) 
+            new BEReview(1, 1, 1, new DateTime()),
+            new BEReview(1, 1, 3, new DateTime()),
+            new BEReview(1, 2, 3, new DateTime()),
+            new BEReview(1, 1, 3, new DateTime()),
+            new BEReview(1, 1, 4, new DateTime()),
+            new BEReview(1, 2, 4, new DateTime())
         };
-        
+
         Mock<IReviewRepository> mockRepository = new Mock<IReviewRepository>();
         mockRepository.Setup(r => r.GetAll()).Returns(fakeRepo);
-        
+
         ReviewService service = new ReviewService(mockRepository.Object);
         //Act
-        int actualCount = service.GetNumberOfRatesByReviewer(reviewer, rating);
+        var actualCount = new int();
+        var exception = false;
+        try
+        {
+            actualCount = service.GetNumberOfRatesByReviewer(reviewer, rating);
+        }
+        catch (ArgumentOutOfRangeException e)
+        {
+            exception = true;
+            Assert.Throws<ArgumentOutOfRangeException>(() => service.GetNumberOfRatesByReviewer(reviewer, rating));
+        }
+
         //Assert
-        Assert.Equal(expectedCount,actualCount);
+        if (!exception)
+            Assert.Equal(expectedCount, actualCount);
         
     }
-    
+
     //4th method
     // to be implemented by daniel
     
