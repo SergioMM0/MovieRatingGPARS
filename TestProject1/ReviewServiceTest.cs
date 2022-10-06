@@ -56,22 +56,19 @@ public class UnitTest1
 
         IReviewService service = new ReviewService(mockRepository.Object);
         
-        //Act
-        var result = new int();
-        var exception = false;
+        //Act+Assert
+        int result ;
         try
         {
             result = service.GetNumberOfReviewsFromReviewer(reviewer);
         }
         catch (ArgumentOutOfRangeException e)
         {
-            exception = true;
             Assert.Throws<ArgumentOutOfRangeException>(() => service.GetNumberOfReviewsFromReviewer(reviewer));
+            return;
         }
         
-        //Assert
-        if (!exception)
-            Assert.Equal(expected, result);
+        Assert.Equal(expected, result);
     }
 
 
@@ -102,19 +99,16 @@ public class UnitTest1
 
         //Act+Assert
         var result= new double();
-        var exception = false;
         try
         {
             result= service.GetAverageRateFromReviewer(reviewer);
         }
         catch (DivideByZeroException)
         {
-            exception = true;
             Assert.Throws<DivideByZeroException>(() => service.GetAverageRateFromReviewer(reviewer));
+            return;
         }
-        
-        if (!exception)
-            Assert.Equal(result, expected);
+        Assert.Equal(result, expected);
 
     }
 
@@ -142,22 +136,18 @@ public class UnitTest1
         mockRepository.Setup(r => r.GetAll()).Returns(fakeRepo);
 
         ReviewService service = new ReviewService(mockRepository.Object);
-        //Act
+        //Act+Assert
         var actualCount = new int();
-        var exception = false;
         try
         {
             actualCount = service.GetNumberOfRatesByReviewer(reviewer, rating);
         }
         catch (ArgumentOutOfRangeException e)
         {
-            exception = true;
             Assert.Throws<ArgumentOutOfRangeException>(() => service.GetNumberOfRatesByReviewer(reviewer, rating));
+            return;
         }
-
-        //Assert
-        if (!exception)
-            Assert.Equal(expectedCount, actualCount);
+        Assert.Equal(expectedCount, actualCount);
         
     }
 
@@ -188,19 +178,16 @@ public class UnitTest1
         
         //Act+Assert
         var result = new double();
-        var exception = false;
         try
         {
             result = service.GetAverageRateOfMovie(movie);
         }
         catch (Exception e)
         {
-            exception = true;
             Assert.Throws<DivideByZeroException>(() => service.GetAverageRateOfMovie(5));
+            return;
         }
-
-        if (!exception)
-            Assert.Equal(expectedRate, result);
+        Assert.Equal(expectedRate, result);
     }
     
 
@@ -276,19 +263,16 @@ public class UnitTest1
         //Act+Assert
 
         var actual= new List<int>();
-        var exception = false;
         try
         {
             actual = service.GetMoviesWithHighestNumberOfTopRates();
         }
         catch (InvalidOperationException e)
         {
-            exception = true;
             Assert.Throws<InvalidOperationException>(() => service.GetMoviesWithHighestNumberOfTopRates());
+            return;
         }
-
-        if (!exception)
-            Assert.Equal(expected,actual);
+        Assert.Equal(expected,actual);
         
     }
 
@@ -536,20 +520,18 @@ public class UnitTest1
         ReviewService service = new ReviewService(mockRepo.Object);
         
         //Act+Act
-        var actualUsers= Array.Empty<int>();
-        var exception = false;
+        int[] actualUsers;
         try
         {
             actualUsers = service.GetReviewersByMovie(movie).ToArray();
         }
         catch (ArgumentOutOfRangeException e)
         {
-            exception = true;
             Assert.Throws<ArgumentOutOfRangeException>(() => service.GetReviewersByMovie(movie));
+            return;
         }
 
-        if (!exception)
-            Assert.Equal(expectedUsers,actualUsers);
+        Assert.Equal(expectedUsers,actualUsers);
     }
 
 }
