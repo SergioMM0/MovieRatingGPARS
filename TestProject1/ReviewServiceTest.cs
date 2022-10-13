@@ -41,7 +41,8 @@ public class UnitTest1
     [Theory]
     [InlineData(1,2)]
     [InlineData(2,1)]
-    public void GetNumberOfReviewsFromReviewerTest(int reviewer, int expected)
+    [InlineData(3,null)]
+    public void GetNumberOfReviewsFromReviewerTest(int reviewer, int? expected)
     {
         var fakeRepo = new []
         {
@@ -55,36 +56,28 @@ public class UnitTest1
 
         IReviewService service = new ReviewService(mockRepository.Object);
         
-        //Act
-        int result = service.GetNumberOfReviewsFromReviewer(reviewer);
+        //Act+Assert
+        int result ;
+        try
+        {
+            result = service.GetNumberOfReviewsFromReviewer(reviewer);
+        }
+        catch (ArgumentOutOfRangeException e)
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => service.GetNumberOfReviewsFromReviewer(reviewer));
+            return;
+        }
         
-        //Assert
         Assert.Equal(expected, result);
-        mockRepository.Verify(r => r.GetAll(), Times.Once);
     }
-    
-    [Fact]
-    public void GetNumberOfReviewsFromReviewerTest_TestOutOfRangeIdException()
-    {
-        //Arrange
-        var fakeRepo = new BEReview[]{};
-        Mock<IReviewRepository> mockRepository = new Mock<IReviewRepository>();
-        mockRepository.Setup(r => r.GetAll()).Returns(fakeRepo);
-        
-        IReviewService service = new ReviewService(mockRepository.Object);
 
-        //Act + Assert
-        
-        Assert.Throws<ArgumentOutOfRangeException>(() => service.GetNumberOfReviewsFromReviewer(3));
-    }
-    
-    
-    
+
     //2nd method
     [Theory]
     [InlineData(1,5)]
     [InlineData(2,3)]
-    public void GetAverageRateFromReviewerTest(int reviewer, double expected)
+    [InlineData(3,null)]
+    public void GetAverageRateFromReviewerTest(int reviewer, double? expected)
     {
         //Arrange
         var fakeRepo = new []
@@ -104,29 +97,19 @@ public class UnitTest1
         
         IReviewService service = new ReviewService(mockRepository.Object);
 
-        //Act
-
-        double result = service.GetAverageRateFromReviewer(reviewer);
-
-        //Assert
-        
+        //Act+Assert
+        var result= new double();
+        try
+        {
+            result= service.GetAverageRateFromReviewer(reviewer);
+        }
+        catch (DivideByZeroException)
+        {
+            Assert.Throws<DivideByZeroException>(() => service.GetAverageRateFromReviewer(reviewer));
+            return;
+        }
         Assert.Equal(result, expected);
-        mockRepository.Verify(r => r.GetAll(), Times.Once);
-    }
-    
-    [Fact]
-    public void GetAverageRateFromReviewer_TestDivideByZeroException()
-    {
-        //Arrange
-        var fakeRepo = new BEReview[]{};
-        Mock<IReviewRepository> mockRepository = new Mock<IReviewRepository>();
-        mockRepository.Setup(r => r.GetAll()).Returns(fakeRepo);
-        
-        IReviewService service = new ReviewService(mockRepository.Object);
 
-        //Act + Assert
-        
-        Assert.Throws<DivideByZeroException>(() => service.GetAverageRateFromReviewer(3));
     }
 
     //3rd method
@@ -153,22 +136,18 @@ public class UnitTest1
         mockRepository.Setup(r => r.GetAll()).Returns(fakeRepo);
 
         ReviewService service = new ReviewService(mockRepository.Object);
-        //Act
+        //Act+Assert
         var actualCount = new int();
-        var exception = false;
         try
         {
             actualCount = service.GetNumberOfRatesByReviewer(reviewer, rating);
         }
         catch (ArgumentOutOfRangeException e)
         {
-            exception = true;
             Assert.Throws<ArgumentOutOfRangeException>(() => service.GetNumberOfRatesByReviewer(reviewer, rating));
+            return;
         }
-
-        //Assert
-        if (!exception)
-            Assert.Equal(expectedCount, actualCount);
+        Assert.Equal(expectedCount, actualCount);
         
     }
 
@@ -231,8 +210,9 @@ public class UnitTest1
     [Theory]
     [InlineData(1,3)]
     [InlineData(2,6)]
+    [InlineData(5,null)]
 
-    public void GetAverageRateOfMovieTest(int movie ,double expectedRate)
+    public void GetAverageRateOfMovieTest(int movie , double? expectedRate)
     {
         var fakeRepo = new []
         {
@@ -247,29 +227,20 @@ public class UnitTest1
 
         IReviewService service = new ReviewService(mockRepository.Object);
         
-        //Act
-        double result = service.GetAverageRateOfMovie(movie);
-        
-        //Assert
+        //Act+Assert
+        var result = new double();
+        try
+        {
+            result = service.GetAverageRateOfMovie(movie);
+        }
+        catch (Exception e)
+        {
+            Assert.Throws<DivideByZeroException>(() => service.GetAverageRateOfMovie(5));
+            return;
+        }
         Assert.Equal(expectedRate, result);
-        mockRepository.Verify(r => r.GetAll(), Times.Once);
     }
     
-    [Fact]
-    public void GetAverageRateOfMovie_ExceptionTest()
-    {
-        var fakeRepo = new BEReview[] { };
-
-        Mock<IReviewRepository> mockRepository = new Mock<IReviewRepository>();
-        mockRepository.Setup(r => r.GetAll()).Returns(fakeRepo);
-
-        IReviewService service = new ReviewService(mockRepository.Object);
-        
-        //Act
-        // +
-        //Assert
-        Assert.Throws<DivideByZeroException>(() => service.GetAverageRateOfMovie(5));
-    }
 
     //6
     [Theory]
@@ -324,49 +295,38 @@ public class UnitTest1
     [Theory]
     [InlineData(new []{1,2,3,4,5,6}, new []{2,5,5,4,0,5}, new []{2,3,6})]
     [InlineData(new []{1,2,3,4,5,6}, new []{2,3,4,5,0,1}, new []{4})]
+    [InlineData(new int[]{}, new int[]{}, null)]
+
     public void GetMoviesWithHighestNumberOfTopRates(int[] movieId, int[] grade, int[] expected)
     {
         //Arrange
-        var fakeRepo = new []
+        var fakeRepo = new BEReview[movieId.Length];
+        for (var i = 0; i < movieId.Length; i++)
         {
-            new BEReview() { Reviewer = 1, Movie = movieId[0], Grade = grade[0], ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 1, Movie = movieId[1], Grade = grade[1], ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 1, Movie = movieId[2], Grade = grade[2], ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 1, Movie = movieId[3], Grade = grade[3], ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 1, Movie = movieId[4], Grade = grade[4], ReviewDate = new DateTime() },
-            new BEReview() { Reviewer = 1, Movie = movieId[5], Grade = grade[5], ReviewDate = new DateTime() }
-        };
-        
+            fakeRepo[i] = new BEReview(1, movieId[i], grade[i], new DateTime());
+        }
+
         Mock<IReviewRepository> mockRepository = new Mock<IReviewRepository>();
         mockRepository.Setup(r => r.GetAll()).Returns(fakeRepo);
         
         IReviewService service = new ReviewService(mockRepository.Object);
         
-        //Act
+        //Act+Assert
 
-        var actual = service.GetMoviesWithHighestNumberOfTopRates();
-
-        //Assert
-        
+        var actual= new List<int>();
+        try
+        {
+            actual = service.GetMoviesWithHighestNumberOfTopRates();
+        }
+        catch (InvalidOperationException e)
+        {
+            Assert.Throws<InvalidOperationException>(() => service.GetMoviesWithHighestNumberOfTopRates());
+            return;
+        }
         Assert.Equal(expected,actual);
-        mockRepository.Verify(r => r.GetAll(), Times.Once);
-    }
-    [Fact]
-    public void GetMoviesWithHighestNumberOfTopRatesThrowsInvalidOperationExWhenRepoIsEmpty()
-    {
-        //Arrange
-        var fakeRepo = new BEReview[]{};
-
-        Mock<IReviewRepository> mockRepository = new Mock<IReviewRepository>();
-        mockRepository.Setup(r => r.GetAll()).Returns(fakeRepo);
         
-        IReviewService service = new ReviewService(mockRepository.Object);
-
-        //Act & Assert
-        
-        Assert.Throws<InvalidOperationException>(() => service.GetMoviesWithHighestNumberOfTopRates());
     }
-    
+
     //8
     //Please do not change for the moment.
     //Debugging reveals correct behaviour but test keeps failing.
@@ -380,7 +340,7 @@ public class UnitTest1
         //Arrange
         var fakeRepo = new BEReview[reviewersIds.Length];
         
-        for (int i = 0; i < reviewersIds.Length; i++)
+        for (var  i = 0; i < reviewersIds.Length; i++)
         {
             fakeRepo[i] = new BEReview()
             {
@@ -577,12 +537,12 @@ public class UnitTest1
     
     //11
     [Theory]
-    [InlineData(2,1,2,3,4)]
-    [InlineData(3,1)]
-    [InlineData(1,1,3,4)]
-    [InlineData(4,1,2)]
-    [InlineData(5)]
-    public void GetReviewersByMovieTest(int movie,params int[] expectedUsers)
+    [InlineData(2,new []{1,2,3,4})]
+    [InlineData(3,new []{1})]
+    [InlineData(1,new []{1,3,4})]
+    [InlineData(4,new []{1,2})]
+    [InlineData(5,new int[]{})]
+    public void GetReviewersByMovieTest(int movie, int[] expectedUsers)
     {
         //Arrange
         #region coolRegionOfData
@@ -610,9 +570,18 @@ public class UnitTest1
 
         ReviewService service = new ReviewService(mockRepo.Object);
         
-        //Act
-        int[] actualUsers = service.GetReviewersByMovie(movie).ToArray();
-        //Assert
+        //Act+Act
+        int[] actualUsers;
+        try
+        {
+            actualUsers = service.GetReviewersByMovie(movie).ToArray();
+        }
+        catch (ArgumentOutOfRangeException e)
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => service.GetReviewersByMovie(movie));
+            return;
+        }
+
         Assert.Equal(expectedUsers,actualUsers);
     }
 
